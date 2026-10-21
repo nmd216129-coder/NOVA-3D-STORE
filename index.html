@@ -1,0 +1,46 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090b12">
+  <title>NOVA - 3D Store</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+  <header>
+    <a class="logo" href="#">NOVA<span>.</span></a>
+    <button id="installBtn" hidden>Install App</button>
+    <button id="cartToggle">Cart (<span id="count">0</span>)</button>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p>NEW SEASON / 2026</p>
+      <h1>Move Beyond<br><span>Ordinary.</span></h1>
+      <p>Discover the next dimension of shopping.</p>
+      <a class="shop-btn" href="#shop">Explore Collection ↗</a>
+      <div class="shoe">👟</div>
+      <p>3D INSPIRED DESIGN</p>
+    </section>
+
+    <section id="shop">
+      <h2>Featured <span>Products.</span></h2>
+      <div id="products" class="products"></div>
+    </section>
+  </main>
+
+  <aside id="cart">
+    <button id="closeCart">Close ×</button>
+    <h2>Your Shopping Bag</h2>
+    <div id="cartItems">Your bag is empty.</div>
+    <h3>Subtotal: ৳<span id="total">0</span></h3>
+    <button id="checkout">Demo Checkout</button>
+    <p>Demo only — real payments are not connected.</p>
+  </aside>
+
+  <script src="./app.js"></script>
+</body>
+</html>
