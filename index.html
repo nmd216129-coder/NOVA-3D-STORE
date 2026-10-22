@@ -1,508 +1,343 @@
 
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f8f6f1">
-<title>NOVA — Modern Lifestyle Store</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA 3D STORE</title>
+
 <style>
-:root{
-  --bg:#faf9f6;--cream:#f0ebe2;--ink:#24231f;
-  --muted:#817d73;--line:#e9e5dd;--white:#fff;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);
-font-family:'DM Sans',Arial,sans-serif}
-button,input{font:inherit}
-button{cursor:pointer}
-a{color:inherit;text-decoration:none}
-.top-note{text-align:center;background:#25241f;color:white;
-padding:9px;font-size:10px;letter-spacing:1.6px}
-header{height:76px;display:flex;align-items:center;justify-content:space-between;
-padding:0 5%;background:#faf9f6eF;border-bottom:1px solid var(--line);
-position:sticky;top:0;z-index:10;backdrop-filter:blur(16px)}
-.logo{font:32px 'Playfair Display',serif;letter-spacing:5px}
-nav{display:flex;gap:27px;font-size:12px}
-nav a:hover{color:#a18b69}
-.header-actions{display:flex;align-items:center;gap:17px}
-.icon-btn{border:0;background:none;font-size:20px;color:var(--ink);padding:5px}
-#cartCount{font-size:11px;background:var(--ink);color:white;
-border-radius:50%;padding:3px 6px;vertical-align:top}
-.hero{margin:22px 4% 0;min-height:440px;position:relative;overflow:hidden;
-display:grid;grid-template-columns:1fr 1fr;background:#eee7dc}
-.hero-copy{padding:clamp(30px,6vw,85px);display:flex;flex-direction:column;
-justify-content:center;align-items:flex-start;z-index:1}
-.eyebrow{font-size:10px;letter-spacing:3px;color:#86765e}
-.hero h1{font:clamp(42px,6vw,76px)/1.07 'Playfair Display',serif;
-font-weight:400;margin:23px 0}
-.hero p{font-size:13px;color:#6f6a60;line-height:1.9;max-width:340px}
-.primary{background:var(--ink);color:white;border:1px solid var(--ink);
-padding:14px 22px;font-size:11px;letter-spacing:1px;transition:.25s}
-.primary:hover{background:#77684f;border-color:#77684f;transform:translateY(-2px)}
-.hero-image{min-height:400px;background:
-linear-gradient(0deg,#27241b18,#27241b00),
-url('https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=85')
-center/cover}
-.trust{display:flex;justify-content:center;gap:35px;flex-wrap:wrap;
-padding:20px 12px;color:var(--muted);font-size:10px;letter-spacing:.7px;
-border-bottom:1px solid var(--line)}
-.trust span{white-space:nowrap}
-.section{padding:64px 5% 20px}
-.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;
-margin-bottom:25px}
-.section h2{font:clamp(29px,4vw,43px) 'Playfair Display',serif;
-font-weight:400;margin:8px 0}
-.sub{font-size:12px;color:var(--muted);line-height:1.8}
-.categories{display:flex;gap:9px;flex-wrap:wrap;margin:25px 0}
-.chip{background:transparent;border:1px solid #ded8ce;padding:10px 16px;
-border-radius:30px;font-size:11px;color:#625e55;transition:.2s}
-.chip.active,.chip:hover{background:var(--ink);color:white;border-color:var(--ink)}
-.search{width:min(270px,100%);padding:12px 14px;border:1px solid var(--line);
-background:white;outline:none;font-size:12px}
-.search:focus{border-color:#9e8a6c}
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:17px}
-.product{min-width:0;animation:rise .6s both}
-.product-image{position:relative;overflow:hidden;background:#f0ece5;
-aspect-ratio:4/4.6;cursor:pointer}
-.product-image img{width:100%;height:100%;object-fit:cover;display:block;
-transition:transform .65s cubic-bezier(.2,.7,.2,1)}
-.product:hover .product-image img{transform:scale(1.055)}
-.tag{position:absolute;top:12px;left:12px;background:#fffdf8;
-padding:6px 8px;font-size:9px;letter-spacing:.5px}
-.quick-view{position:absolute;left:10px;right:10px;bottom:10px;
-width:calc(100% - 20px);border:0;background:#fffffff0;color:#25241f;
-padding:12px;font-size:10px;letter-spacing:.8px;
-opacity:0;transform:translateY(7px);transition:.25s}
-.product:hover .quick-view{opacity:1;transform:none}
-.product-info{padding:12px 1px}
-.product-name{font-size:12px;margin-bottom:7px}
-.product-meta{display:flex;align-items:center;justify-content:space-between;gap:8px}
-.price{font-size:12px;font-weight:600}
-.view-label{font-size:9px;color:var(--muted)}
-.editorial{margin:65px 4% 20px;display:grid;grid-template-columns:1fr 1fr;
-background:#efebe3;min-height:300px}
-.editorial-img{background:url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?auto=format&fit=crop&w=1000&q=85') center/cover;min-height:300px}
-.editorial-copy{display:flex;flex-direction:column;justify-content:center;
-align-items:flex-start;padding:clamp(25px,6vw,65px)}
-.editorial-copy h2{font:clamp(29px,4vw,44px)/1.2 'Playfair Display',serif;
-font-weight:400;margin:15px 0}
-footer{background:#25241f;color:#f7f2e9;margin-top:70px;
-padding:40px 5%;display:flex;justify-content:space-between;gap:25px;flex-wrap:wrap}
-footer .logo{font-size:28px}
-footer p{font-size:11px;color:#c6c0b5;line-height:1.8}
-footer small{font-size:10px;color:#bcb5a8}
 
-/* Product detail viewer */
-#viewer{position:fixed;z-index:30;inset:0;background:#faf9f6;
-display:none;grid-template-columns:1.15fr 1fr;overflow:auto}
-#viewer.open{display:grid;animation:fade .3s both}
-.viewer-stage{background:#f0ece4;position:relative;min-height:100vh;
-display:flex;align-items:center;justify-content:center;overflow:hidden}
-#threeCanvas{width:100%;height:100%;position:absolute;inset:0;touch-action:none}
-.stage-label{position:absolute;left:25px;top:25px;font-size:10px;
-letter-spacing:2px;z-index:1;pointer-events:none}
-.stage-hint{position:absolute;bottom:25px;left:20px;right:20px;
-text-align:center;font-size:10px;color:#756e62;pointer-events:none}
-.close-view{position:fixed;top:17px;right:20px;z-index:40;border:1px solid var(--line);
-background:#fff;padding:11px 15px;font-size:12px}
-.viewer-info{padding:clamp(25px,5vw,65px);display:flex;
-flex-direction:column;justify-content:center;min-width:0}
-.viewer-info h2{font:clamp(32px,4vw,48px) 'Playfair Display',serif;
-font-weight:400;margin:15px 0}
-.big-price{font-size:18px;font-weight:600;margin-bottom:18px}
-.description{font-size:12px;color:var(--muted);line-height:1.9}
-.detail-line{border-top:1px solid var(--line);padding:17px 0;
-font-size:11px;display:flex;justify-content:space-between;gap:10px}
-.swatches{display:flex;gap:10px;margin:14px 0 24px}
-.swatch{width:27px;height:27px;border-radius:50%;border:2px solid white;
-outline:1px solid #cfc6b8}
-.size-list{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 25px}
-.size-btn{background:transparent;border:1px solid var(--line);
-padding:10px 14px;font-size:11px}
-.size-btn.active{background:var(--ink);color:white}
-.viewer-buttons{display:flex;gap:10px;margin-top:8px}
-.viewer-buttons button{flex:1}
-.secondary{border:1px solid var(--ink);background:transparent;
-padding:14px;font-size:11px}
-#toast{position:fixed;z-index:50;bottom:20px;left:50%;
-transform:translate(-50%,20px);background:#25241f;color:white;
-padding:13px 20px;font-size:11px;opacity:0;pointer-events:none;transition:.3s}
-#toast.show{opacity:1;transform:translate(-50%,0)}
-@keyframes rise{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
-@keyframes fade{from{opacity:0}to{opacity:1}}
+body {
+  background: #f5f3ee;
+  color: #171817;
+  font-family: Arial, sans-serif;
+}
 
-@media(max-width:800px){
- nav{gap:12px}nav a:nth-child(n+3){display:none}
- .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
- .hero{grid-template-columns:1fr}
- .hero-copy{padding:38px 27px 30px}
- .hero-image{min-height:270px}
- .section{padding:45px 4% 10px}
- .quick-view{opacity:1;transform:none}
- .editorial{grid-template-columns:1fr;margin-top:45px}
- .editorial-img{min-height:270px}
- #viewer.open{grid-template-columns:1fr;grid-template-rows:minmax(340px,48vh) auto}
- .viewer-stage{min-height:340px}
- .viewer-info{padding:27px 22px 40px}
- .close-view{position:absolute;top:12px;right:12px}
- .stage-label{top:17px;left:16px}
- .trust{gap:14px}
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 5%;
+  border-bottom: 1px solid #ddd9d0;
 }
-@media(min-width:801px) and (max-width:1050px){
- .grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+
+.logo {
+  font-size: 27px;
+  font-weight: 900;
+  letter-spacing: -2px;
 }
-@media(prefers-reduced-motion:reduce){
- *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}
+
+nav {
+  display: flex;
+  gap: 20px;
+}
+
+nav a {
+  color: #171817;
+  text-decoration: none;
+  font-size: 13px;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+.button {
+  background: #171817;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 30px;
+}
+
+.hero {
+  margin: 22px 5%;
+  min-height: 480px;
+  background:
+    linear-gradient(90deg, #161b18d9, #161b1840),
+    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=85")
+    center/cover;
+  border-radius: 5px;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 7%;
+}
+
+.hero small {
+  letter-spacing: 4px;
+  margin-bottom: 20px;
+}
+
+.hero h1 {
+  font-size: clamp(48px, 9vw, 100px);
+  line-height: .9;
+  letter-spacing: -6px;
+}
+
+.hero p {
+  max-width: 400px;
+  line-height: 1.7;
+  margin: 22px 0;
+}
+
+section {
+  padding: 55px 5%;
+}
+
+.heading {
+  font-size: clamp(32px, 5vw, 55px);
+  letter-spacing: -3px;
+  margin: 10px 0 25px;
+}
+
+.tabs, .filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-bottom: 20px;
+}
+
+.tab, .filter {
+  border: 1px solid #d7d3ca;
+  background: transparent;
+  padding: 11px 16px;
+  border-radius: 25px;
+}
+
+.tab.active, .filter.active {
+  background: #171817;
+  color: white;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.product {
+  min-width: 0;
+}
+
+.product img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: #e5e2da;
+  cursor: pointer;
+}
+
+.product h3 {
+  font-size: 14px;
+  margin: 12px 0 7px;
+}
+
+.product p {
+  color: #696962;
+  font-size: 13px;
+}
+
+.product button {
+  margin-top: 10px;
+  padding: 9px 13px;
+  background: #171817;
+  color: white;
+  border-radius: 25px;
+}
+
+.feature {
+  margin: 20px 5% 60px;
+  padding: 45px;
+  background: #202520;
+  color: white;
+}
+
+.feature h2 {
+  font-size: clamp(32px, 6vw, 60px);
+  margin: 12px 0;
+}
+
+.feature p {
+  color: #c7c9c2;
+  line-height: 1.7;
+}
+
+footer {
+  padding: 25px 5%;
+  background: #e8e5de;
+  color: #555;
+  font-size: 12px;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 10;
+  background: #000b;
+  padding: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: #f5f3ee;
+  padding: 25px;
+  width: min(500px, 100%);
+  max-height: 90vh;
+  overflow: auto;
+}
+
+.modal-content input,
+.modal-content select {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+}
+
+.modal-content button {
+  padding: 12px 16px;
+  margin: 5px 5px 5px 0;
+}
+
+@media (max-width: 800px) {
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .product img {
+    height: 220px;
+  }
+}
+
+@media (max-width: 500px) {
+  header {
+    padding: 17px 4%;
+  }
+
+  nav {
+    gap: 10px;
+  }
+
+  nav a {
+    font-size: 11px;
+  }
+
+  .hero {
+    margin: 14px 4%;
+    min-height: 440px;
+    padding: 7%;
+  }
+
+  .hero h1 {
+    letter-spacing: -3px;
+  }
+
+  section {
+    padding: 40px 4%;
+  }
+
+  .product img {
+    height: 180px;
+  }
+
+  .feature {
+    margin: 10px 4% 40px;
+    padding: 25px;
+  }
 }
 </style>
 </head>
 <body>
 
-<div class="top-note">A MORE THOUGHTFUL WAY TO SHOP · NOVA COLLECTION</div>
-
 <header>
-  <a class="logo" href="#">NOVA</a>
+  <div class="logo">NOVA®</div>
   <nav>
-    <a href="#">Home</a><a href="#shop">Shop</a>
-    <a href="#categories">Categories</a><a href="#about">About</a>
+    <a href="#shop" onclick="setShop('men')">MEN</a>
+    <a href="#shop" onclick="setShop('women')">WOMEN</a>
   </nav>
-  <div class="header-actions">
-    <button class="icon-btn" id="searchToggle" aria-label="Search">⌕</button>
-    <button class="icon-btn" id="cartButton" aria-label="Shopping cart">Bag <span id="cartCount">0</span></button>
-  </div>
+  <button class="button" onclick="openCart()">BAG <span id="bagCount">0</span></button>
 </header>
 
-<section class="hero">
-  <div class="hero-copy">
-    <span class="eyebrow">THE NOVA EDIT · 01</span>
-    <h1>Everyday objects.<br>Extraordinary style.</h1>
-    <p>Discover considered essentials for modern living. Timeless design, thoughtful details and a little more beauty in every day.</p>
-    <a class="primary" href="#shop">EXPLORE COLLECTION ↗</a>
+<div class="hero">
+  <small>THE FUTURE OF SHOPPING</small>
+  <h1>ENTER<br>NOVA.</h1>
+  <p>Discover modern essentials in a new shopping dimension. Explore the collection and find your style.</p>
+  <div>
+    <button class="button" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
+      EXPLORE COLLECTION ↗
+    </button>
   </div>
-  <div class="hero-image" role="img" aria-label="Modern fashion boutique"></div>
-</section>
-
-<div class="trust">
-  <span>CONSIDERED DESIGN</span><span>·</span>
-  <span>CURATED ESSENTIALS</span><span>·</span>
-  <span>MADE FOR EVERYDAY</span>
 </div>
 
-<main id="shop" class="section">
-  <div class="section-head">
-    <div>
-      <span class="eyebrow">THE COLLECTION</span>
-      <h2>Objects of desire</h2>
-      <div class="sub">A modern edit of fashion, technology and lifestyle.</div>
-    </div>
-    <input class="search" id="search" placeholder="Search the collection..." aria-label="Search products">
+<section id="shop">
+  <small>THE NOVA COLLECTION</small>
+  <h2 class="heading" id="shopTitle">Men's Collection</h2>
+
+  <div class="tabs">
+    <button class="tab active" id="menTab" onclick="setShop('men')">MEN'S SHOP</button>
+    <button class="tab" id="womenTab" onclick="setShop('women')">WOMEN'S SHOP</button>
   </div>
 
-  <div class="categories" id="categories">
-    <button class="chip active" data-category="All">All products</button>
-    <button class="chip" data-category="Fashion">Fashion</button>
-    <button class="chip" data-category="Shoes">Shoes</button>
-    <button class="chip" data-category="Bags">Bags</button>
-    <button class="chip" data-category="Tech">Tech</button>
-    <button class="chip" data-category="Beauty">Beauty</button>
-    <button class="chip" data-category="Accessories">Accessories</button>
-  </div>
-
-  <div class="grid" id="productGrid"></div>
-</main>
-
-<section class="editorial" id="about">
-  <div class="editorial-img"></div>
-  <div class="editorial-copy">
-    <span class="eyebrow">LESS, BUT BETTER</span>
-    <h2>Make room for<br>what matters.</h2>
-    <p class="sub">A collection built around clean forms, calm colours and everyday utility.</p>
-    <a href="#shop" class="primary">DISCOVER NOVA ↗</a>
-  </div>
+  <div class="filters" id="filters"></div>
+  <div class="products" id="products"></div>
 </section>
+
+<div class="feature">
+  <small>NOVA / DESIGN PHILOSOPHY</small>
+  <h2>Less noise.<br>More intention.</h2>
+  <p>Everyday essentials, elevated. A modern storefront concept designed to showcase your products with clarity.</p>
+</div>
 
 <footer>
-  <div><div class="logo">NOVA</div><p>Modern essentials for modern living.</p></div>
-  <div><p>FASHION · LIFESTYLE · TECH</p><small>Demo store · Sample prices · No real checkout</small></div>
-  <div><small>© 2026 NOVA. Design with intention.</small></div>
+  <h2>NOVA®</h2>
+  <p>Independent demo store · 2026</p>
 </footer>
 
-<section id="viewer" aria-label="Product details">
-  <div class="viewer-stage">
-    <span class="stage-label">NOVA / 3D STUDIO</span>
-    <canvas id="threeCanvas"></canvas>
-    <div class="stage-hint">TOUCH AND DRAG TO ROTATE · PINCH OR USE CONTROLS TO ZOOM</div>
+<div class="modal" id="adminModal">
+  <div class="modal-content">
+    <h2>Add a Product</h2>
+    <form id="productForm">
+      <input name="name" placeholder="Product name" required>
+      <input name="price" type="number" placeholder="Price in ৳" required>
+      <select name="shop">
+        <option value="men">Men's</option>
+        <option value="women">Women's</option>
+      </select>
+      <select name="category" id="adminCategory"></select>
+      <input name="image" placeholder="Direct image URL (https://...)" type="url">
+      <button class="button" type="submit">SAVE PRODUCT</button>
+      <button type="button" onclick="closeModal('adminModal')">CLOSE</button>
+    </form>
+    <p style="font-size:12px;line-height:1.6">
+      Products are saved in this browser on this device. This demo does not include real payments or cloud syncing.
+    </p>
+    <div id="adminList"></div>
   </div>
-  <button class="close-view" id="closeViewer">CLOSE ×</button>
-  <div class="viewer-info">
-    <span class="eyebrow" id="detailCategory">NOVA COLLECTION</span>
-    <h2 id="detailName">Essential Product</h2>
-    <div class="big-price" id="detailPrice">৳ 1,250</div>
-    <p class="description" id="detailDescription">Designed for everyday life, with thoughtful details and a clean, modern silhouette.</p>
-    <div class="detail-line"><span>DESIGN</span><span>Modern / Minimal</span></div>
-    <div class="detail-line"><span>PREVIEW</span><span>Interactive 3D</span></div>
-    <div style="font-size:11px;margin-top:15px">SELECT COLOUR</div>
-    <div class="swatches">
-      <button class="swatch" data-colour="#d8c4a8" style="background:#d8c4a8" aria-label="Cream"></button>
-      <button class="swatch" data-colour="#77766e" style="background:#77766e" aria-label="Stone"></button>
-      <button class="swatch" data-colour="#292925" style="background:#292925" aria-label="Black"></button>
-    </div>
-    <div style="font-size:11px">SELECT SIZE</div>
-    <div class="size-list" id="sizeList">
-      <button class="size-btn active">Standard</button>
-      <button class="size-btn">Small</button>
-      <button class="size-btn">Large</button>
-    </div>
-    <div class="viewer-buttons">
-      <button class="primary" id="addToCart">ADD TO BAG +</button>
-      <button class="secondary" id="zoomButton">ZOOM +</button>
-    </div>
-    <p class="description" style="margin-top:18px">Interactive preview uses a stylised 3D shape. Replace with the exact product's 3D model for a true, realistic 360° view.</p>
+</div>
+
+<div class="modal" id="cartModal">
+  <div class="modal-content">
+    <h2>Your Bag</h2>
+    <div id="cartItems"></div>
+    <button onclick="closeModal('cartModal')">CLOSE</button>
   </div>
-</section>
+</div>
 
-<div id="toast" role="status"></div>
-
-<script type="module">
-import * as THREE from
-'https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js';
-
-const products=[
- {id:1,name:'Essential Oversized Tee',category:'Fashion',price:1250,tag:'BESTSELLER',kind:'shirt',image:'https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=85'},
- {id:2,name:'Sculpted Everyday Sneaker',category:'Shoes',price:3250,tag:'NEW ARRIVAL',kind:'shoe',image:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=85'},
- {id:3,name:'Structured Leather Bag',category:'Bags',price:2850,tag:'EDITOR’S PICK',kind:'bag',image:'https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=700&q=85'},
- {id:4,name:'Minimal Smart Watch',category:'Tech',price:4990,tag:'MODERN TECH',kind:'watch',image:'https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=85'},
- {id:5,name:'Signature Eau de Parfum',category:'Beauty',price:2250,tag:'NOVA SIGNATURE',kind:'perfume',image:'https://images.unsplash.com/photo-1541643600914-78b084683601?auto=format&fit=crop&w=700&q=85'},
- {id:6,name:'Everyday Sunglasses',category:'Accessories',price:1290,tag:'TIMELESS',kind:'glasses',image:'https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=700&q=85'},
- {id:7,name:'Soft Everyday Hoodie',category:'Fashion',price:1850,tag:'COMFORT EDIT',kind:'shirt',image:'https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=700&q=85'},
- {id:8,name:'Weekend Travel Bag',category:'Bags',price:2450,tag:'DAILY ESSENTIAL',kind:'bag',image:'https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=85'}
-];
-
-const grid=document.getElementById('productGrid');
-const search=document.getElementById('search');
-let category='All', selected=null, cart=0;
-
-function money(n){return '৳ '+n.toLocaleString('en-US')}
-function render(){
- const term=search.value.toLowerCase().trim();
- const filtered=products.filter(p=>
-   (category==='All'||p.category===category)&&
-   p.name.toLowerCase().includes(term)
- );
- grid.innerHTML='';
- filtered.forEach((p,i)=>{
-  const card=document.createElement('article');
-  card.className='product';
-  card.style.animationDelay=(i*.045)+'s';
-  card.innerHTML=`
-   <div class="product-image" role="button" tabindex="0" aria-label="View ${p.name}">
-    <img src="${p.image}" alt="${p.name}" loading="lazy">
-    <span class="tag">${p.tag}</span>
-    <button class="quick-view">EXPLORE IN 3D ↗</button>
-   </div>
-   <div class="product-info">
-    <div class="product-name">${p.name}</div>
-    <div class="product-meta"><span class="price">${money(p.price)}</span><span class="view-label">3D VIEW ↗</span></div>
-   </div>`;
-  const open=()=>openProduct(p);
-  card.querySelector('.product-image').addEventListener('click',open);
-  card.querySelector('.product-image').addEventListener('keydown',e=>{
-    if(e.key==='Enter'||e.key===' '){e.preventDefault();open()}
-  });
-  grid.appendChild(card);
- });
- if(!filtered.length)grid.innerHTML='<p class="sub">No products found. Try another search.</p>';
-}
-
-document.querySelectorAll('.chip').forEach(btn=>{
- btn.addEventListener('click',()=>{
-  document.querySelectorAll('.chip').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');category=btn.dataset.category;render();
- });
-});
-search.addEventListener('input',render);
-document.getElementById('searchToggle').onclick=()=>{
- search.focus();document.getElementById('shop').scrollIntoView({behavior:'smooth'});
-};
-document.getElementById('cartButton').onclick=()=>toast('Your bag contains '+cart+' item(s). Demo only.');
-render();
-
-function toast(message){
- const el=document.getElementById('toast');
- el.textContent=message;el.classList.add('show');
- clearTimeout(toast.timer);toast.timer=setTimeout(()=>el.classList.remove('show'),2400);
-}
-
-// Interactive stylised 3D product viewer
-const viewer=document.getElementById('viewer');
-const canvas=document.getElementById('threeCanvas');
-let renderer,scene,camera,model,raf;
-let rotX=-.12,rotY=.45,zoom=5.2,dragging=false,prevX=0,prevY=0;
-let productColour='#d8c4a8';
-
-function material(color,roughness=.5,metalness=0){
- return new THREE.MeshStandardMaterial({color,roughness,metalness});
-}
-function addMesh(group,geometry,mat,pos,scale,rotation){
- const mesh=new THREE.Mesh(geometry,mat);
- mesh.position.set(...pos);
- if(scale)mesh.scale.set(...scale);
- if(rotation)mesh.rotation.set(...rotation);
- mesh.castShadow=true;mesh.receiveShadow=true;
- group.add(mesh);return mesh;
-}
-function buildModel(p){
- const g=new THREE.Group();
- const body=material(productColour,.43);
- const dark=material('#282722',.3,.15);
- const sole=material('#f4eee3',.7);
- const metal=material('#c2a579',.28,.65);
-
- if(p.kind==='shoe'){
-  addMesh(g,new THREE.SphereGeometry(1,40,24),body,[0,0,0],[1.2,.38,.48],[0,0,-.08]);
-  addMesh(g,new THREE.SphereGeometry(1,32,20),sole,[0,-.24,.04],[1.24,.15,.49]);
-  addMesh(g,new THREE.BoxGeometry(.72,.055,.06),dark,[-.1,.18,-.04],[1,1,1]);
-  for(let i=0;i<5;i++){
-   addMesh(g,new THREE.BoxGeometry(.48,.025,.035),sole,[-.18,.24,i*.035-.09],[1,1,1],[0,0,-.2]);
-  }
- }else if(p.kind==='bag'){
-  addMesh(g,new THREE.BoxGeometry(1.35,1.25,.55),body,[0,0,0],[1,1,1],[0,0,-.04]);
-  addMesh(g,new THREE.TorusGeometry(.42,.075,12,36,Math.PI),metal,[0,.62,0],[1,1,1],[0,0,Math.PI]);
-  addMesh(g,new THREE.BoxGeometry(.18,.12,.06),metal,[0,.12,.3]);
- }else if(p.kind==='watch'){
-  addMesh(g,new THREE.BoxGeometry(.48,.65,.18),dark,[0,0,0]);
-  addMesh(g,new THREE.BoxGeometry(.25,.65,.08),body,[0,.58,0]);
-  addMesh(g,new THREE.BoxGeometry(.25,.65,.08),body,[0,-.58,0]);
-  addMesh(g,new THREE.BoxGeometry(.36,.5,.035),material('#dce2d9',.25,.1),[0,0,.11]);
-  addMesh(g,new THREE.BoxGeometry(.025,.18,.018),dark,[0,.04,.135]);
-  addMesh(g,new THREE.BoxGeometry(.12,.025,.018),dark,[.04,-.04,.135]);
- }else if(p.kind==='perfume'){
-  addMesh(g,new THREE.BoxGeometry(.8,1.2,.5),body,[0,0,0]);
-  addMesh(g,new THREE.BoxGeometry(.25,.23,.25),metal,[0,.72,0]);
-  addMesh(g,new THREE.BoxGeometry(.5,.3,.025),sole,[0,-.08,.265]);
- }else if(p.kind==='glasses'){
-  for(const x of [-.48,.48]){
-   addMesh(g,new THREE.TorusGeometry(.34,.055,12,36),dark,[x,0,0],[1,.72,1]);
-   addMesh(g,new THREE.CircleGeometry(.29,32),material('#5b5a52',.2),[x,0,.015],[1,.72,1]);
-  }
-  addMesh(g,new THREE.BoxGeometry(.22,.055,.055),metal,[0,.03,0]);
-  addMesh(g,new THREE.BoxGeometry(.5,.05,.05),dark,[-.95,.08,0],[1,1,1],[0,-.18,0]);
-  addMesh(g,new THREE.BoxGeometry(.5,.05,.05),dark,[.95,.08,0],[1,1,1],[0,.18,0]);
- }else{
-  // Stylised fashion garment
-  addMesh(g,new THREE.BoxGeometry(1.15,1.35,.24),body,[0,-.02,0]);
-  addMesh(g,new THREE.BoxGeometry(.42,.42,.26),body,[-.78,.42,0],[1,1,1],[0,0,.3]);
-  addMesh(g,new THREE.BoxGeometry(.42,.42,.26),body,[.78,.42,0],[1,1,1],[0,0,-.3]);
-  addMesh(g,new THREE.TorusGeometry(.18,.045,12,32),dark,[0,.68,.02],[1,1,1],[Math.PI,0,0]);
- }
- return g;
-}
-
-function init3D(){
- if(renderer)return;
- scene=new THREE.Scene();scene.background=new THREE.Color('#f0ece4');
- camera=new THREE.PerspectiveCamera(38,1,.1,100);
- renderer=new THREE.WebGLRenderer({canvas,antialias:true,alpha:false});
- renderer.setPixelRatio(Math.min(devicePixelRatio,1.7));
- renderer.outputColorSpace=THREE.SRGBColorSpace;
- renderer.toneMapping=THREE.ACESFilmicToneMapping;
- renderer.toneMappingExposure=1.2;
- scene.add(new THREE.HemisphereLight('#fff8ed','#9b8c79',2.4));
- const key=new THREE.DirectionalLight('#fff5e5',3.2);
- key.position.set(4,6,5);scene.add(key);
- const fill=new THREE.DirectionalLight('#e3d8c6',1.8);
- fill.position.set(-4,2,2);scene.add(fill);
- const floor=new THREE.Mesh(new THREE.CircleGeometry(3,64),material('#e1d8c9',.8));
- floor.rotation.x=-Math.PI/2;floor.position.y=-1.25;
- scene.add(floor);
- const ring=new THREE.Mesh(new THREE.TorusGeometry(1.65,.012,10,100),material('#c3a779',.35,.5));
- ring.rotation.x=Math.PI/2;ring.position.y=-1.23;scene.add(ring);
- resize3D();
- animate3D();
-}
-function resize3D(){
- if(!renderer||!viewer.classList.contains('open'))return;
- const rect=canvas.getBoundingClientRect();
- if(!rect.width||!rect.height)return;
- renderer.setSize(rect.width,rect.height,false);
- camera.aspect=rect.width/rect.height;camera.updateProjectionMatrix();
-}
-function animate3D(){
- raf=requestAnimationFrame(animate3D);
- if(!renderer||!viewer.classList.contains('open'))return;
- if(model){model.rotation.x=rotX;model.rotation.y=rotY;}
- camera.position.set(0,.25,zoom);camera.lookAt(0,0,0);
- renderer.render(scene,camera);
-}
-function openProduct(p){
- selected=p;productColour='#d8c4a8';rotX=-.12;rotY=.45;zoom=5.2;
- document.getElementById('detailCategory').textContent=p.category.toUpperCase()+' / NOVA COLLECTION';
- document.getElementById('detailName').textContent=p.name;
- document.getElementById('detailPrice').textContent=money(p.price);
- document.getElementById('detailDescription').textContent=
- 'A considered everyday essential with a modern silhouette and refined finish. Explore the stylised 3D preview by dragging.';
- document.querySelectorAll('.swatch').forEach(b=>b.style.outlineColor=b.dataset.colour===productColour?'#25241f':'#cfc6b8');
- viewer.classList.add('open');document.body.style.overflow='hidden';
- init3D();
- if(model)scene.remove(model);
- model=buildModel(p);scene.add(model);
- requestAnimationFrame(resize3D);
-}
-function closeProduct(){
- viewer.classList.remove('open');document.body.style.overflow='';
-}
-document.getElementById('closeViewer').onclick=closeProduct;
-window.addEventListener('keydown',e=>{if(e.key==='Escape')closeProduct()});
-window.addEventListener('resize',resize3D);
-canvas.addEventListener('pointerdown',e=>{
- dragging=true;prevX=e.clientX;prevY=e.clientY;canvas.setPointerCapture(e.pointerId);
-});
-canvas.addEventListener('pointermove',e=>{
- if(!dragging)return;
- rotY+=(e.clientX-prevX)*.012;
- rotX+=(e.clientY-prevY)*.008;
- rotX=Math.max(-1.1,Math.min(1.1,rotX));
- prevX=e.clientX;prevY=e.clientY;
-});
-canvas.addEventListener('pointerup',()=>dragging=false);
-canvas.addEventListener('pointercancel',()=>dragging=false);
-canvas.addEventListener('wheel',e=>{
- e.preventDefault();zoom=Math.max(3.3,Math.min(8,zoom+e.deltaY*.006));
-},{passive:false});
-
-document.querySelectorAll('.swatch').forEach(b=>{
- b.onclick=()=>{
-  productColour=b.dataset.colour;
-  document.querySelectorAll('.swatch').forEach(s=>s.style.outlineColor='#cfc6b8');
-  b.style.outlineColor='#25241f';
-  if(model){
-   model.traverse(obj=>{
-    if(obj.isMesh&&obj.material.color&&obj.material.color.getHexString()!=='f4eee3'&&obj.material.color.getHexString()!=='282722'){
-     obj.material.color.set(productColour);
-    }
-   });
-  }
- };
-});
-document.querySelectorAll('.size-btn').forEach(b=>{
- b.onclick=()=>{
-  document.querySelectorAll('.size-btn').forEach(s=>s.classList.remove('active'));
-  b.classList.add('active');
- };
-});
-document.getElementById('zoomButton').onclick=()=>{
- zoom=zoom>4?3.4:5.2;
-};
-document.getElementById('addToCart').onclick=()=>{
- if(!selected)return;
- cart++;
- document.getElementById('cartCount').textContent=cart;
- toast(selected.name+' added to your demo bag.');
-};
-</script>
-</body>
-</html>
+<div class="modal" id="previewModal">
+  <div class="modal-content" id="previewContent"></div>
+</div>
