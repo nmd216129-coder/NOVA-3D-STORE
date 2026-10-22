@@ -2,45 +2,793 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090b12">
-  <title>NOVA - 3D Store</title>
-  <link rel="manifest" href="./manifest.webmanifest">
-  <link rel="stylesheet" href="./style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#f7f4ee">
+<title>NOVA | Fashion Store</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #f7f4ee;
+  color: #26241f;
+  font-family: Arial, sans-serif;
+}
+
+button, a {
+  font: inherit;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* INTRO SCREEN */
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: linear-gradient(135deg, #fffefa, #eee4d5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transition: opacity 1s ease, visibility 1s ease;
+  overflow: hidden;
+}
+
+.intro.hide {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-content {
+  width: 100%;
+  padding: 20px;
+}
+
+.intro-small {
+  font-size: 10px;
+  letter-spacing: 4px;
+  color: #817462;
+  opacity: 0;
+  animation: fadeUp 1s 0.2s forwards;
+}
+
+/* TWO FASHION MODELS */
+
+.models {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin: 28px auto;
+}
+
+.model {
+  position: relative;
+  width: min(39vw, 230px);
+  height: clamp(230px, 42vh, 360px);
+  overflow: hidden;
+  border-radius: 130px 130px 5px 5px;
+  background: #e9dfd0;
+  opacity: 0;
+}
+
+.model img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+}
+
+.model-one {
+  transform: translateX(-100px);
+  animation: enterLeft 1.3s 0.4s forwards,
+             float 5s 1.8s ease-in-out infinite;
+}
+
+.model-two {
+  transform: translateX(100px);
+  animation: enterRight 1.3s 0.6s forwards,
+             float 5s 2s ease-in-out infinite;
+}
+
+.model::after {
+  content: "";
+  position: absolute;
+  inset: 55% 0 0;
+  background: linear-gradient(transparent, #171512aa);
+}
+
+.model-caption {
+  position: absolute;
+  z-index: 2;
+  bottom: 15px;
+  left: 10px;
+  right: 10px;
+  color: white;
+  text-align: left;
+  font: 17px Georgia, serif;
+  opacity: 0;
+  animation: fadeUp 1s 1.5s forwards;
+}
+
+.center-logo {
+  position: absolute;
+  z-index: 5;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  background: #fffaf0;
+  border: 1px solid #e4d7c5;
+  display: grid;
+  place-items: center;
+  font: 23px Georgia, serif;
+  opacity: 0;
+  transform: scale(.5);
+  animation: logoIn .8s 1.2s forwards;
+}
+
+/* BRAND TEXT */
+
+.brand {
+  font: clamp(48px, 11vw, 82px) Georgia, serif;
+  letter-spacing: 13px;
+  padding-left: 13px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeUp 1s 1.8s forwards;
+}
+
+.intro-description {
+  max-width: 420px;
+  margin: 16px auto 22px;
+  font: 15px/1.8 Georgia, serif;
+  color: #766c5e;
+  opacity: 0;
+  animation: fadeUp 1s 2.3s forwards;
+}
+
+.enter-button {
+  background: #26241f;
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  cursor: pointer;
+  opacity: 0;
+  animation: fadeUp 1s 2.7s forwards;
+  transition: background .3s, transform .3s;
+}
+
+.enter-button:hover {
+  background: #75644e;
+  transform: translateY(-3px);
+}
+
+.skip-button {
+  position: absolute;
+  top: 18px;
+  right: 16px;
+  border: 1px solid #d9cbbb;
+  background: transparent;
+  padding: 10px 12px;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+/* HOME PAGE */
+
+header {
+  height: 72px;
+  padding: 0 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fffefa;
+  border-bottom: 1px solid #e8e0d5;
+}
+
+.logo {
+  font: 30px Georgia, serif;
+  letter-spacing: 5px;
+}
+
+nav {
+  display: flex;
+  gap: 25px;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.bag {
+  border: 1px solid #ddd4c8;
+  background: transparent;
+  padding: 10px 12px;
+  font-size: 11px;
+}
+
+/* HERO SECTION */
+
+.hero {
+  max-width: 1300px;
+  margin: auto;
+  padding: 65px 6%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 35px;
+}
+
+.hero-label {
+  font-size: 10px;
+  letter-spacing: 3px;
+  color: #847967;
+  text-transform: uppercase;
+}
+
+.hero h1 {
+  font: clamp(40px, 5.5vw, 70px)/1.08 Georgia, serif;
+  font-weight: normal;
+  margin: 22px 0;
+}
+
+.hero h1 em {
+  color: #9c8668;
+}
+
+.hero p {
+  max-width: 430px;
+  color: #766f64;
+  font: 15px/1.9 Georgia, serif;
+}
+
+.shop-button {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 16px 20px;
+  background: #26241f;
+  color: white;
+  font-size: 10px;
+  letter-spacing: 2px;
+  transition: background .3s;
+}
+
+.shop-button:hover {
+  background: #75644e;
+}
+
+.hero-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  padding: 25px;
+  background: #eee5d8;
+  overflow: hidden;
+}
+
+.hero-images img {
+  width: 48%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform .6s;
+}
+
+.hero-images img:first-child {
+  animation: float 5s ease-in-out infinite;
+}
+
+.hero-images img:last-child {
+  animation: float 5s 1s ease-in-out infinite;
+}
+
+.hero-images img:hover {
+  transform: scale(1.04);
+}
+
+/* PRODUCTS */
+
+.collection {
+  padding: 35px 6% 75px;
+  max-width: 1400px;
+  margin: auto;
+}
+
+.collection h2 {
+  font: 42px Georgia, serif;
+  font-weight: normal;
+  margin: 12px 0 28px;
+}
+
+.collection-label {
+  color: #817767;
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+}
+
+.product {
+  padding: 10px;
+  background: #fffefa;
+  border: 1px solid #e9e0d5;
+  transition: transform .3s, box-shadow .3s;
+}
+
+.product:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 30px #51412b12;
+}
+
+.product img {
+  display: block;
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  background: #eee5d8;
+}
+
+.product-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 15px 3px 7px;
+  font-size: 13px;
+}
+
+.product-info small {
+  display: block;
+  margin-top: 6px;
+  color: #817767;
+  font-size: 10px;
+}
+
+.product-info strong {
+  font-size: 12px;
+  font-weight: normal;
+  white-space: nowrap;
+}
+
+.about {
+  padding: 45px 6% 75px;
+  background: #eee5d8;
+}
+
+.about h2 {
+  font: 38px Georgia, serif;
+  font-weight: normal;
+  margin-bottom: 18px;
+}
+
+.about p {
+  max-width: 650px;
+  color: #6f675c;
+  line-height: 1.9;
+}
+
+footer {
+  padding: 25px 6%;
+  background: #fffefa;
+  border-top: 1px solid #e8e0d5;
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #817767;
+}
+
+/* ANIMATION EFFECTS */
+
+@keyframes enterLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes enterRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes logoIn {
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes float {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 0 -8px; }
+}
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 700px) {
+  header {
+    height: 64px;
+    padding: 0 16px;
+  }
+
+  .logo {
+    font-size: 23px;
+    letter-spacing: 3px;
+  }
+
+  nav {
+    gap: 12px;
+    font-size: 9px;
+  }
+
+  .models {
+    gap: 10px;
+    margin: 25px auto;
+  }
+
+  .model {
+    width: 43vw;
+    height: clamp(220px, 34vh, 300px);
+  }
+
+  .model-caption {
+    font-size: 14px;
+  }
+
+  .center-logo {
+    width: 45px;
+    height: 45px;
+    font-size: 19px;
+  }
+
+  .intro-description {
+    font-size: 13px;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    padding: 30px 18px 45px;
+    gap: 28px;
+  }
+
+  .hero-images {
+    grid-row: 1;
+    padding: 15px;
+  }
+
+  .hero-images img {
+    height: 270px;
+  }
+
+  .hero-copy {
+    grid-row: 2;
+  }
+
+  .hero h1 {
+    font-size: 48px;
+  }
+
+  .collection {
+    padding: 25px 15px 50px;
+  }
+
+  .collection h2 {
+    font-size: 34px;
+  }
+
+  .products {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .product {
+    padding: 7px;
+  }
+
+  .product img {
+    height: 175px;
+  }
+
+  .product-info {
+    font-size: 11px;
+  }
+
+  .product-info strong {
+    font-size: 10px;
+  }
+
+  .about {
+    padding: 35px 18px 50px;
+  }
+
+  .about h2 {
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 380px) {
+  nav a:last-child {
+    display: none;
+  }
+
+  .model {
+    height: 220px;
+  }
+
+  .hero h1 {
+    font-size: 42px;
+  }
+
+  .hero-images img {
+    height: 230px;
+  }
+
+  .product img {
+    height: 145px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
 </head>
+
 <body>
-  <header>
-    <a class="logo" href="#">NOVA<span>.</span></a>
-    <button id="installBtn" hidden>Install App</button>
-    <button id="cartToggle">Cart (<span id="count">0</span>)</button>
-  </header>
 
-  <main>
-    <section class="hero">
-      <p>NEW SEASON / 2026</p>
-      <h1>Move Beyond<br><span>Ordinary.</span></h1>
-      <p>Discover the next dimension of shopping.</p>
-      <a class="shop-btn" href="#shop">Explore Collection ↗</a>
-      <div class="shoe">👟</div>
-      <p>3D INSPIRED DESIGN</p>
-    </section>
+<!-- INTRO ANIMATION -->
 
-    <section id="shop">
-      <h2>Featured <span>Products.</span></h2>
-      <div id="products" class="products"></div>
-    </section>
-  </main>
+<section class="intro" id="intro">
+  <button class="skip-button" id="skipIntro">
+    হোমে যান ↗
+  </button>
 
-  <aside id="cart">
-    <button id="closeCart">Close ×</button>
-    <h2>Your Shopping Bag</h2>
-    <div id="cartItems">Your bag is empty.</div>
-    <h3>Subtotal: ৳<span id="total">0</span></h3>
-    <button id="checkout">Demo Checkout</button>
-    <p>Demo only — real payments are not connected.</p>
-  </aside>
+  <div class="intro-content">
 
-  <script src="./app.js"></script>
+    <div class="intro-small">
+      THE DESIGNER EDIT · 2026
+    </div>
+
+    <div class="models">
+
+      <div class="model model-one">
+        <img
+          src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85"
+          alt="Fashion model one">
+
+        <div class="model-caption">
+          Modern Form
+        </div>
+      </div>
+
+      <div class="center-logo">N.</div>
+
+      <div class="model model-two">
+        <img
+          src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85"
+          alt="Fashion model two">
+
+        <div class="model-caption">
+          Quiet Confidence
+        </div>
+      </div>
+
+    </div>
+
+    <h1 class="brand">NOVA</h1>
+
+    <p class="intro-description">
+      Style that speaks softly.<br>
+      Discover modern essentials and timeless fashion.
+    </p>
+
+    <button class="enter-button" id="enterStore">
+      ENTER THE STORE ↗
+    </button>
+
+  </div>
+</section>
+
+<!-- HOME PAGE -->
+
+<header id="home">
+
+  <a href="#home" class="logo">NOVA</a>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#collection">Collection</a>
+    <a href="#about">Our Story</a>
+  </nav>
+
+  <button class="bag" id="bagButton">
+    BAG (0)
+  </button>
+
+</header>
+
+<!-- HERO -->
+
+<section class="hero">
+
+  <div class="hero-copy">
+
+    <div class="hero-label">
+      THOUGHTFULLY CHOSEN · 2026
+    </div>
+
+    <h1>
+      Wear your story.<br>
+      <em>Define your</em> style.
+    </h1>
+
+    <p>
+      Discover contemporary style, timeless silhouettes
+      and carefully selected fashion essentials for every day.
+    </p>
+
+    <a href="#collection" class="shop-button">
+      EXPLORE THE COLLECTION ↗
+    </a>
+
+  </div>
+
+  <div class="hero-images">
+
+    <img
+      src="https://images.unsplash.com/photo-1539109136881-3be0616acf4b?auto=format&fit=crop&w=800&q=85"
+      alt="NOVA fashion collection">
+
+    <img
+      src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85"
+      alt="NOVA designer fashion">
+
+  </div>
+
+</section>
+
+<!-- PRODUCT COLLECTION -->
+
+<section class="collection" id="collection">
+
+  <div class="collection-label">
+    CURATED FOR EVERYDAY
+  </div>
+
+  <h2>The Collection</h2>
+
+  <div class="products">
+
+    <article class="product">
+      <img
+        src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=700&q=85"
+        alt="Cream jacket">
+
+      <div class="product-info">
+        <div>
+          Tailored Layer
+          <small>Soft structure · Cream</small>
+        </div>
+        <strong>৳ 2,450</strong>
+      </div>
+    </article>
+
+    <article class="product">
+      <img
+        src="https://images.unsplash.com/photo-1544441893-675973e31985?auto=format&fit=crop&w=700&q=85"
+        alt="Fashion clothing">
+
+      <div class="product-info">
+        <div>
+          Modern Classic
+          <small>Natural tones</small>
+        </div>
+        <strong>৳ 1,850</strong>
+      </div>
+    </article>
+
+    <article class="product">
+      <img
+        src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=700&q=85"
+        alt="Designer fashion">
+
+      <div class="product-info">
+        <div>
+          Everyday Essential
+          <small>Minimal design</small>
+        </div>
+        <strong>৳ 1,250</strong>
+      </div>
+    </article>
+
+  </div>
+
+</section>
+
+<!-- ABOUT -->
+
+<section class="about" id="about">
+
+  <h2>Less noise. More style.</h2>
+
+  <p>
+    NOVA is a modern fashion store concept built around
+    clean design, thoughtful details and a calm shopping
+    experience. These are demo products. Replace their
+    images, prices and details with the real store inventory
+    before launching a client's shop.
+  </p>
+
+</section>
+
+<footer>
+  <span>NOVA © 2026</span>
+  <span>DESIGNED WITH INTENTION</span>
+  <span>DEMO STORE</span>
+</footer>
+
+<script>
+const intro = document.getElementById("intro");
+const enterButton = document.getElementById("enterStore");
+const skipButton = document.getElementById("skipIntro");
+
+let introClosed = false;
+
+function enterHome() {
+  if (introClosed) return;
+
+  introClosed = true;
+  intro.classList.add("hide");
+  document.body.style.overflow = "";
+
+  setTimeout(function() {
+    intro.style.display = "none";
+  }, 1100);
+}
+
+enterButton.addEventListener("click", enterHome);
+skipButton.addEventListener("click", enterHome);
+
+/* Automatically open the homepage after the intro. */
+setTimeout(enterHome, 7200);
+
+/* Demo bag button */
+document.getElementById("bagButton").addEventListener("click", function() {
+  alert("This is a demo store. Shopping cart and checkout are not connected yet.");
+});
+</script>
+
 </body>
 </html>
