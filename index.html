@@ -341,3 +341,288 @@ footer {
 <div class="modal" id="previewModal">
   <div class="modal-content" id="previewContent"></div>
 </div>
+  
+<script>
+const categories = {
+  men: ["All", "Shirts", "Pants", "Shoes", "Watches", "Phones", "Accessories"],
+  women: ["All", "Dresses", "Bags", "Shoes & Heels", "Watches", "Beauty & Jewelry", "Accessories"]
+};
+
+const starterProducts = [
+  {
+    id: 1,
+    name: "Essential Cotton Shirt",
+    price: 1450,
+    shop: "men",
+    category: "Shirts",
+    image: "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 2,
+    name: "Modern Jacket",
+    price: 2850,
+    shop: "men",
+    category: "Shirts",
+    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 3,
+    name: "Classic Sneakers",
+    price: 2200,
+    shop: "men",
+    category: "Shoes",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 4,
+    name: "Classic Watch",
+    price: 3200,
+    shop: "men",
+    category: "Watches",
+    image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 5,
+    name: "Sculpted Dress",
+    price: 2650,
+    shop: "women",
+    category: "Dresses",
+    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 6,
+    name: "Shoulder Bag",
+    price: 1950,
+    shop: "women",
+    category: "Bags",
+    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 7,
+    name: "Modern Heels",
+    price: 2400,
+    shop: "women",
+    category: "Shoes & Heels",
+    image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    id: 8,
+    name: "Beauty Collection",
+    price: 980,
+    shop: "women",
+    category: "Beauty & Jewelry",
+    image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=800&q=80"
+  }
+];
+
+let products;
+
+try {
+  products = JSON.parse(localStorage.getItem("novaProducts")) || starterProducts;
+} catch (error) {
+  products = starterProducts;
+}
+
+let activeShop = "men";
+let activeCategory = "All";
+let cart = [];
+
+function saveProducts() {
+  localStorage.setItem("novaProducts", JSON.stringify(products));
+}
+
+function money(price) {
+  return "৳" + Number(price).toLocaleString("en-US");
+}
+
+function setShop(shop) {
+  activeShop = shop;
+  activeCategory = "All";
+
+  document.getElementById("shopTitle").textContent =
+    shop === "men" ? "Men's Collection" : "Women's Collection";
+
+  document.getElementById("menTab").classList.toggle("active", shop === "men");
+  document.getElementById("womenTab").classList.toggle("active", shop === "women");
+
+  renderFilters();
+  renderProducts();
+}
+
+function renderFilters() {
+  const container = document.getElementById("filters");
+
+  container.innerHTML = categories[activeShop].map(category => `
+    <button class="filter ${category === activeCategory ? "active" : ""}"
+      onclick="setCategory('${category}')">
+      ${category}
+    </button>
+  `).join("");
+}
+
+function setCategory(category) {
+  activeCategory = category;
+  renderFilters();
+  renderProducts();
+}
+
+function renderProducts() {
+  const container = document.getElementById("products");
+
+  const visibleProducts = products.filter(product =>
+    product.shop === activeShop &&
+    (activeCategory === "All" || product.category === activeCategory)
+  );
+
+  if (visibleProducts.length === 0) {
+    container.innerHTML = "<p>No products in this category yet.</p>";
+    return;
+  }
+
+  container.innerHTML = visibleProducts.map(product => `
+    <div class="product">
+      <img src="${product.image || ""}"
+        alt="${product.name}"
+        onclick="showPreview(${product.id})"
+        onerror="this.style.display='none'">
+
+      <h3>${product.name}</h3>
+      <p>${product.category}</p>
+      <p><strong>${money(product.price)}</strong></p>
+
+      <button onclick="addToCart(${product.id})">Add to Bag +</button>
+    </div>
+  `).join("");
+}
+
+function showPreview(id) {
+  const product = products.find(item => item.id === id);
+  if (!product) return;
+
+  document.getElementById("previewContent").innerHTML = `
+    <button onclick="closeModal('previewModal')">CLOSE ×</button>
+    <img src="${product.image || ""}"
+      alt="${product.name}"
+      style="width:100%;max-height:300px;object-fit:contain;margin:15px 0">
+    <h2>${product.name}</h2>
+    <p style="margin:12px 0">${product.category}</p>
+    <h3>${money(product.price)}</h3>
+    <button class="button" onclick="addToCart(${product.id})">ADD TO BAG +</button>
+  `;
+
+  document.getElementById("previewModal").classList.add("show");
+}
+
+function addToCart(id) {
+  const product = products.find(item => item.id === id);
+  if (!product) return;
+
+  cart.push(product);
+  document.getElementById("bagCount").textContent = cart.length;
+  alert("Product added to your bag!");
+}
+
+function openCart() {
+  const container = document.getElementById("cartItems");
+
+  if (cart.length === 0) {
+    container.innerHTML = "<p>Your bag is empty.</p>";
+  } else {
+    container.innerHTML = cart.map((product, index) => `
+      <div style="padding:12px 0;border-bottom:1px solid #ddd">
+        <strong>${product.name}</strong>
+        <p>${money(product.price)}</p>
+        <button onclick="removeFromCart(${index})">Remove</button>
+      </div>
+    `).join("");
+
+    const total = cart.reduce((sum, product) => sum + Number(product.price), 0);
+    container.innerHTML += `<h3 style="margin-top:15px">Total: ${money(total)}</h3>`;
+    container.innerHTML += "<p style='margin-top:10px'>Demo only — payment is not connected.</p>";
+  }
+
+  document.getElementById("cartModal").classList.add("show");
+}
+
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  document.getElementById("bagCount").textContent = cart.length;
+  openCart();
+}
+
+function closeModal(id) {
+  document.getElementById(id).classList.remove("show");
+}
+
+function openAdmin() {
+  updateAdminCategories();
+  updateAdminList();
+  document.getElementById("adminModal").classList.add("show");
+}
+
+function updateAdminCategories() {
+  const shop = document.querySelector('#productForm [name="shop"]').value;
+  const select = document.getElementById("adminCategory");
+
+  select.innerHTML = categories[shop]
+    .filter(category => category !== "All")
+    .map(category => `<option value="${category}">${category}</option>`)
+    .join("");
+}
+
+function updateAdminList() {
+  document.getElementById("adminList").innerHTML =
+    "<hr style='margin:18px 0'><h3>Your Products</h3>" +
+    products.map(product => `
+      <p style="margin:10px 0">
+        ${product.name} — ${money(product.price)}
+        <button onclick="deleteProduct(${product.id})">Delete</button>
+      </p>
+    `).join("");
+}
+
+function deleteProduct(id) {
+  products = products.filter(product => product.id !== id);
+  saveProducts();
+  updateAdminList();
+  renderProducts();
+}
+
+document.getElementById("productForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const form = new FormData(this);
+
+  const product = {
+    id: Date.now(),
+    name: form.get("name").trim(),
+    price: Number(form.get("price")),
+    shop: form.get("shop"),
+    category: form.get("category"),
+    image: form.get("image").trim()
+  };
+
+  products.push(product);
+  saveProducts();
+
+  setShop(product.shop);
+  updateAdminList();
+  this.reset();
+  updateAdminCategories();
+
+  alert("Product saved successfully!");
+});
+
+document.querySelector('#productForm [name="shop"]')
+  .addEventListener("change", updateAdminCategories);
+
+document.getElementById("adminOpen").onclick = openAdmin;
+
+renderFilters();
+renderProducts();
+updateAdminCategories();
+</script>
+
+</body>
+</html>
+
