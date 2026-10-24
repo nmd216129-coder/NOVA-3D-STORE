@@ -3,626 +3,174 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>NOVA 3D STORE</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NOVA | Premium Store</title>
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  background: #f5f3ee;
-  color: #171817;
-  font-family: Arial, sans-serif;
-}
-
-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 20px 5%;
-  border-bottom: 1px solid #ddd9d0;
-}
-
-.logo {
-  font-size: 27px;
-  font-weight: 900;
-  letter-spacing: -2px;
-}
-
-nav {
-  display: flex;
-  gap: 20px;
-}
-
-nav a {
-  color: #171817;
-  text-decoration: none;
-  font-size: 13px;
-}
-
-button {
-  cursor: pointer;
-  border: none;
-}
-
-.button {
-  background: #171817;
-  color: white;
-  padding: 12px 18px;
-  border-radius: 30px;
-}
-
-.hero {
-  margin: 22px 5%;
-  min-height: 480px;
-  background:
-    linear-gradient(90deg, #161b18d9, #161b1840),
-    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=85")
-    center/cover;
-  border-radius: 5px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 7%;
-}
-
-.hero small {
-  letter-spacing: 4px;
-  margin-bottom: 20px;
-}
-
-.hero h1 {
-  font-size: clamp(48px, 9vw, 100px);
-  line-height: .9;
-  letter-spacing: -6px;
-}
-
-.hero p {
-  max-width: 400px;
-  line-height: 1.7;
-  margin: 22px 0;
-}
-
-section {
-  padding: 55px 5%;
-}
-
-.heading {
-  font-size: clamp(32px, 5vw, 55px);
-  letter-spacing: -3px;
-  margin: 10px 0 25px;
-}
-
-.tabs, .filters {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  margin-bottom: 20px;
-}
-
-.tab, .filter {
-  border: 1px solid #d7d3ca;
-  background: transparent;
-  padding: 11px 16px;
-  border-radius: 25px;
-}
-
-.tab.active, .filter.active {
-  background: #171817;
-  color: white;
-}
-
-.products {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-}
-
-.product {
-  min-width: 0;
-}
-
-.product img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  background: #e5e2da;
-  cursor: pointer;
-}
-
-.product h3 {
-  font-size: 14px;
-  margin: 12px 0 7px;
-}
-
-.product p {
-  color: #696962;
-  font-size: 13px;
-}
-
-.product button {
-  margin-top: 10px;
-  padding: 9px 13px;
-  background: #171817;
-  color: white;
-  border-radius: 25px;
-}
-
-.feature {
-  margin: 20px 5% 60px;
-  padding: 45px;
-  background: #202520;
-  color: white;
-}
-
-.feature h2 {
-  font-size: clamp(32px, 6vw, 60px);
-  margin: 12px 0;
-}
-
-.feature p {
-  color: #c7c9c2;
-  line-height: 1.7;
-}
-
-footer {
-  padding: 25px 5%;
-  background: #e8e5de;
-  color: #555;
-  font-size: 12px;
-}
-
-.modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 10;
-  background: #000b;
-  padding: 20px;
-  align-items: center;
-  justify-content: center;
-}
-
-.modal.show {
-  display: flex;
-}
-
-.modal-content {
-  background: #f5f3ee;
-  padding: 25px;
-  width: min(500px, 100%);
-  max-height: 90vh;
-  overflow: auto;
-}
-
-.modal-content input,
-.modal-content select {
-  display: block;
-  width: 100%;
-  padding: 12px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-}
-
-.modal-content button {
-  padding: 12px 16px;
-  margin: 5px 5px 5px 0;
-}
-
-@media (max-width: 800px) {
-  .products {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-
-  .product img {
-    height: 220px;
-  }
-}
-
-@media (max-width: 500px) {
-  header {
-    padding: 17px 4%;
-  }
-
-  nav {
-    gap: 10px;
-  }
-
-  nav a {
-    font-size: 11px;
-  }
-
-  .hero {
-    margin: 14px 4%;
-    min-height: 440px;
-    padding: 7%;
-  }
-
-  .hero h1 {
-    letter-spacing: -3px;
-  }
-
-  section {
-    padding: 40px 4%;
-  }
-
-  .product img {
-    height: 180px;
-  }
-
-  .feature {
-    margin: 10px 4% 40px;
-    padding: 25px;
-  }
-}
+*{box-sizing:border-box}
+body{margin:0;background:#080908;color:#f7f1e6;font-family:Arial,sans-serif}
+header{display:flex;align-items:center;justify-content:space-between;padding:18px 5%;background:#090909;border-bottom:1px solid #5b4325;position:sticky;top:0;z-index:5}
+.logo{font:36px Georgia,serif;letter-spacing:5px;color:#f3c879}
+nav{display:flex;gap:22px}
+a{color:inherit;text-decoration:none;font-size:13px}
+button{cursor:pointer}
+.gold{background:linear-gradient(100deg,#d69a3d,#ffdc91);color:#171009;border:0;padding:12px 19px;border-radius:25px;font-weight:bold}
+.hero{min-height:430px;position:relative;display:flex;align-items:center;padding:55px 6%;overflow:hidden;background:linear-gradient(90deg,#080908 3%,#080908dc 35%,#08090820),url('https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg,#080908 0%,transparent 25%);animation:fade 3s ease}
+@keyframes fade{from{opacity:.2}to{opacity:1}}
+.hero-content{position:relative;z-index:1;max-width:560px}
+.eyebrow{color:#e8b45b;letter-spacing:4px;font-size:11px}
+h1{font:clamp(48px,8vw,82px)/.95 Georgia,serif;margin:20px 0}
+.hero p{line-height:1.8;color:#d6cbb9;max-width:410px;font-size:14px}
+section.products-section{padding:35px 4%}
+.section-title{font:40px Georgia,serif;margin:10px 0}
+.topline{display:flex;justify-content:space-between;align-items:center;gap:15px;flex-wrap:wrap}
+#search{padding:12px 16px;border-radius:24px;background:#111;color:white;border:1px solid #5b4325}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:22px 0}
+.filters button{border:1px solid #5b4325;background:#111;color:#eee;padding:10px 15px;border-radius:24px}
+.filters button.active{background:#e8b45b;color:#100d08}
+.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
+.card{border:1px solid #40301d;background:linear-gradient(145deg,#19150f,#090909);border-radius:9px;overflow:hidden;transition:.3s}
+.card:hover{transform:translateY(-5px);border-color:#e8b45b}
+.photo{height:230px;position:relative;cursor:pointer;background:radial-gradient(ellipse,#5b4124,#17120c 65%,#080908);overflow:hidden}
+.photo img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.card:hover .photo img{transform:scale(1.08)}
+.like{position:absolute;top:10px;right:10px;width:36px;height:36px;border-radius:50%;background:#080908d9;color:white;border:1px solid #b08a4d;font-size:20px}
+.like.on{color:#ffc45c}
+.tag{position:absolute;top:12px;left:10px;background:#090909d9;color:#f4c879;padding:6px 8px;font-size:10px}
+.info{padding:13px}
+.stars{color:#ffb82e;letter-spacing:2px;font-size:15px}
+.reviews{font-size:10px;color:#b5ad9f;letter-spacing:0}
+.category{font-size:10px;color:#e8b45b;letter-spacing:2px;margin-top:10px;text-transform:uppercase}
+.name{font-size:14px;margin:7px 0 12px}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.price{font-size:15px}
+.add{background:#19130a;border:1px solid #9e753b;color:#ffd88a;width:35px;height:35px;border-radius:50%;font-size:22px}
+.feature{display:grid;grid-template-columns:1.2fr 1fr;margin:15px 4% 35px;border:1px solid #49371e;background:#11100d}
+.feature img{width:100%;height:290px;object-fit:cover}
+.feature-copy{padding:30px;align-self:center}
+.feature-copy h2{font:42px Georgia,serif}
+.feature-copy p{color:#c6bba9;line-height:1.8;font-size:13px}
+footer{border-top:1px solid #49371e;padding:25px 4%;display:flex;justify-content:space-between;gap:15px;flex-wrap:wrap;color:#c5b9a7;font-size:12px}
+.modal{display:none;position:fixed;inset:0;background:#000e;z-index:10;align-items:center;justify-content:center;padding:15px}
+.modal.show{display:flex}
+.box{background:#11110e;border:1px solid #8a6635;padding:22px;width:min(750px,100%);max-height:90vh;overflow:auto;border-radius:10px}
+.box-head{display:flex;justify-content:space-between;align-items:center}
+.close{background:none;color:white;border:1px solid #8a6635;border-radius:50%;width:35px;height:35px;font-size:20px}
+.detail{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.detail img{width:100%;height:320px;object-fit:cover}
+.detail h2{font:32px Georgia,serif}
+.field{margin:13px 0}
+.field label{display:block;color:#e8b45b;font-size:12px;margin-bottom:6px}
+.field input,.field select{width:100%;padding:12px;background:#080908;border:1px solid #5b4325;color:white}
+.cartline{padding:12px 0;border-bottom:1px solid #49371e;display:flex;justify-content:space-between;gap:10px}
+.small{font-size:11px;color:#b5ad9f;line-height:1.7}
+@media(max-width:900px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:600px){header{padding:14px 4%}.logo{font-size:28px}nav{display:none}.hero{min-height:420px;padding:45px 6%}.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo{height:180px}.section-title{font-size:32px}.feature{grid-template-columns:1fr}.feature img{height:210px}.feature-copy{padding:22px}.detail{grid-template-columns:1fr}.detail img{height:240px}}
 </style>
 </head>
 <body>
-
 <header>
-  <div class="logo">NOVA®</div>
-  <nav>
-    <a href="#shop" onclick="setShop('men')">MEN</a>
-    <a href="#shop" onclick="setShop('women')">WOMEN</a>
-  </nav>
-  <button class="button" onclick="openCart()">BAG <span id="bagCount">0</span></button>
+<a class="logo" href="#">NOVA</a>
+<nav><a href="#home">HOME</a><a href="#shop">SHOP</a><a href="#shop">COLLECTIONS</a><a href="#about">ABOUT</a></nav>
+<div>
+<button onclick="showLikes()" style="background:none;border:0;color:#f3c879;font-size:22px">♡</button>
+<button onclick="openCart()" style="background:none;border:0;color:#f3c879;font-size:19px">BAG <span id="bagCount">0</span></button>
+<button class="gold" onclick="openAdmin()">ADMIN</button>
+</div>
 </header>
 
-<div class="hero">
-  <small>THE FUTURE OF SHOPPING</small>
-  <h1>ENTER<br>NOVA.</h1>
-  <p>Discover modern essentials in a new shopping dimension. Explore the collection and find your style.</p>
-  <div>
-    <button class="button" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">
-      EXPLORE COLLECTION ↗
-    </button>
-  </div>
+<section class="hero" id="home">
+<div class="hero-content">
+<div class="eyebrow">NOVA SIGNATURE COLLECTION</div>
+<h1>STEP INTO<br>STYLE.</h1>
+<p>Discover premium-inspired sneakers, hoodies, jackets, bags and accessories. Modern essentials. Timeless style.</p>
+<button class="gold" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">EXPLORE COLLECTION →</button>
 </div>
-
-<section id="shop">
-  <small>THE NOVA COLLECTION</small>
-  <h2 class="heading" id="shopTitle">Men's Collection</h2>
-
-  <div class="tabs">
-    <button class="tab active" id="menTab" onclick="setShop('men')">MEN'S SHOP</button>
-    <button class="tab" id="womenTab" onclick="setShop('women')">WOMEN'S SHOP</button>
-  </div>
-
-  <div class="filters" id="filters"></div>
-  <div class="products" id="products"></div>
 </section>
 
-<div class="feature">
-  <small>NOVA / DESIGN PHILOSOPHY</small>
-  <h2>Less noise.<br>More intention.</h2>
-  <p>Everyday essentials, elevated. A modern storefront concept designed to showcase your products with clarity.</p>
+<section class="products-section" id="shop">
+<div class="topline">
+<div><div class="eyebrow">CURATED FOR YOU</div><h2 class="section-title">Featured Products</h2></div>
+<input id="search" placeholder="Search products..." oninput="render()">
 </div>
+<div class="filters" id="filters"></div>
+<div class="grid" id="products"></div>
+</section>
 
-<footer>
-  <h2>NOVA®</h2>
-  <p>Independent demo store · 2026</p>
-</footer>
-
-<div class="modal" id="adminModal">
-  <div class="modal-content">
-    <h2>Add a Product</h2>
-    <form id="productForm">
-      <input name="name" placeholder="Product name" required>
-      <input name="price" type="number" placeholder="Price in ৳" required>
-      <select name="shop">
-        <option value="men">Men's</option>
-        <option value="women">Women's</option>
-      </select>
-      <select name="category" id="adminCategory"></select>
-      <input name="image" placeholder="Direct image URL (https://...)" type="url">
-      <button class="button" type="submit">SAVE PRODUCT</button>
-      <button type="button" onclick="closeModal('adminModal')">CLOSE</button>
-    </form>
-    <p style="font-size:12px;line-height:1.6">
-      Products are saved in this browser on this device. This demo does not include real payments or cloud syncing.
-    </p>
-    <div id="adminList"></div>
-  </div>
+<section class="feature" id="about">
+<img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=1000&q=85" alt="Premium watch">
+<div class="feature-copy">
+<div class="eyebrow">THE NOVA EDIT</div>
+<h2>Timeless<br>Elegance.</h2>
+<p>Discover your next everyday favorite with a refined collection of contemporary fashion and lifestyle essentials.</p>
+<button class="gold" onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">SHOP NOW →</button>
 </div>
+</section>
+<footer><span class="logo">NOVA</span><span>Fashion · Lifestyle · Tech</span><span>Style. Comfort. You.</span></footer>
 
-<div class="modal" id="cartModal">
-  <div class="modal-content">
-    <h2>Your Bag</h2>
-    <div id="cartItems"></div>
-    <button onclick="closeModal('cartModal')">CLOSE</button>
-  </div>
-</div>
+<div class="modal" id="previewModal"><div class="box"><div class="box-head"><h2>Product Details</h2><button class="close" onclick="closeModal('previewModal')">×</button></div><div id="previewContent"></div></div></div>
+<div class="modal" id="cartModal"><div class="box"><div class="box-head"><h2>Your Bag</h2><button class="close" onclick="closeModal('cartModal')">×</button></div><div id="cartItems"></div></div></div>
+<div class="modal" id="adminModal"><div class="box"><div class="box-head"><h2>NOVA Product Studio</h2><button class="close" onclick="closeModal('adminModal')">×</button></div>
+<p class="small">Add your own product name, price and direct image URL. This demo saves products in this browser on this device only.</p>
+<form id="productForm">
+<div class="field"><label>Product name</label><input name="name" required placeholder="NOVA Runner X"></div>
+<div class="field"><label>Price in BDT</label><input name="price" type="number" min="0" required placeholder="3250"></div>
+<div class="field"><label>Category</label><select name="category"><option>Shoes</option><option>Jackets</option><option>Hoodies</option><option>Bags</option><option>Watches</option><option>Accessories</option></select></div>
+<div class="field"><label>Image URL</label><input name="image" type="url" required placeholder="https://..."></div>
+<div class="field"><label>Collection</label><select name="shop"><option value="men">Men</option><option value="women">Women</option><option value="lifestyle">Lifestyle</option></select></div>
+<button class="gold" type="submit">SAVE PRODUCT</button>
+</form><div id="adminList"></div></div></div>
 
-<div class="modal" id="previewModal">
-  <div class="modal-content" id="previewContent"></div>
-</div>
-  
 <script>
-const categories = {
-  men: ["All", "Shirts", "Pants", "Shoes", "Watches", "Phones", "Accessories"],
-  women: ["All", "Dresses", "Bags", "Shoes & Heels", "Watches", "Beauty & Jewelry", "Accessories"]
-};
-
-const starterProducts = [
-  {
-    id: 1,
-    name: "Essential Cotton Shirt",
-    price: 1450,
-    shop: "men",
-    category: "Shirts",
-    image: "https://images.unsplash.com/photo-1603252109303-2751441dd157?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 2,
-    name: "Modern Jacket",
-    price: 2850,
-    shop: "men",
-    category: "Shirts",
-    image: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 3,
-    name: "Classic Sneakers",
-    price: 2200,
-    shop: "men",
-    category: "Shoes",
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 4,
-    name: "Classic Watch",
-    price: 3200,
-    shop: "men",
-    category: "Watches",
-    image: "https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 5,
-    name: "Sculpted Dress",
-    price: 2650,
-    shop: "women",
-    category: "Dresses",
-    image: "https://images.unsplash.com/photo-1595777457583-95e059d581b8?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 6,
-    name: "Shoulder Bag",
-    price: 1950,
-    shop: "women",
-    category: "Bags",
-    image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 7,
-    name: "Modern Heels",
-    price: 2400,
-    shop: "women",
-    category: "Shoes & Heels",
-    image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    id: 8,
-    name: "Beauty Collection",
-    price: 980,
-    shop: "women",
-    category: "Beauty & Jewelry",
-    image: "https://images.unsplash.com/photo-1611930022073-b7a4ba5fcccd?auto=format&fit=crop&w=800&q=80"
-  }
+const starter=[
+{id:1,name:"NOVA Runner Sneakers",price:3250,category:"Shoes",shop:"men",image:"https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=85",reviews:124},
+{id:2,name:"Premium Urban Jacket",price:2850,category:"Jackets",shop:"men",image:"https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=900&q=85",reviews:98},
+{id:3,name:"Classic NOVA Watch",price:3200,category:"Watches",shop:"lifestyle",image:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=85",reviews:76},
+{id:4,name:"Luxe Handbag",price:2450,category:"Bags",shop:"women",image:"https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=900&q=85",reviews:64},
+{id:5,name:"Essential Hoodie",price:1850,category:"Hoodies",shop:"men",image:"https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=900&q=85",reviews:87},
+{id:6,name:"Elegant Heels",price:2700,category:"Shoes",shop:"women",image:"https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=900&q=85",reviews:52},
+{id:7,name:"Street Backpack",price:2250,category:"Bags",shop:"lifestyle",image:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=900&q=85",reviews:63},
+{id:8,name:"Minimal Sunglasses",price:1290,category:"Accessories",shop:"lifestyle",image:"https://images.unsplash.com/photo-1511499767150-a48a237f0083?auto=format&fit=crop&w=900&q=85",reviews:87},
+{id:9,name:"Signature Hoodie",price:1950,category:"Hoodies",shop:"women",image:"https://images.unsplash.com/photo-1578681994506-b8f463449011?auto=format&fit=crop&w=900&q=85",reviews:72},
+{id:10,name:"Premium Crossbody Bag",price:2150,category:"Bags",shop:"women",image:"https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=900&q=85",reviews:41},
+{id:11,name:"Sport Chronograph",price:3490,category:"Watches",shop:"men",image:"https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=900&q=85",reviews:103},
+{id:12,name:"Modern Street Jacket",price:2990,category:"Jackets",shop:"women",image:"https://images.unsplash.com/photo-1548126032-079a0fb0099d?auto=format&fit=crop&w=900&q=85",reviews:59}
 ];
-
-let products;
-
-try {
-  products = JSON.parse(localStorage.getItem("novaProducts")) || starterProducts;
-} catch (error) {
-  products = starterProducts;
+function loadProducts(){try{return JSON.parse(localStorage.getItem("novaProducts"))||starter.slice()}catch(e){return starter.slice()}}
+let products=loadProducts(),filter="All",cart=[],likes=[];
+try{likes=JSON.parse(localStorage.getItem("novaLikes")||"[]")}catch(e){}
+const categories=["All","Men","Women","Shoes","Jackets","Hoodies","Bags","Watches","Accessories","Lifestyle"];
+function money(n){return "৳ "+Number(n).toLocaleString("en-US")}
+function safe(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function renderFilters(){document.getElementById("filters").innerHTML=categories.map(c=>`<button class="${filter===c?"active":""}" onclick="setFilter('${c}')">${c}</button>`).join("")}
+function setFilter(c){filter=c;renderFilters();render()}
+function render(){
+let q=(document.getElementById("search").value||"").toLowerCase();
+let list=products.filter(p=>(filter==="All"||(filter==="Men"?p.shop==="men":filter==="Women"?p.shop==="women":filter==="Lifestyle"?p.shop==="lifestyle":p.category===filter))&&(p.name+" "+p.category+" "+p.shop).toLowerCase().includes(q));
+document.getElementById("products").innerHTML=list.map(p=>`
+<article class="card">
+<div class="photo" onclick="preview(${p.id})">
+<img src="${safe(p.image)}" alt="${safe(p.name)}" onerror="this.style.opacity='.15'">
+<span class="tag">NOVA • 360 VIEW</span>
+<button class="like ${likes.includes(p.id)?"on":""}" onclick="event.stopPropagation();toggleLike(${p.id})">${likes.includes(p.id)?"♥":"♡"}</button>
+</div>
+<div class="info"><div class="stars">★★★★★ <span class="reviews">(${p.reviews||0})</span></div>
+<div class="category">${safe(p.category)}</div><div class="name">${safe(p.name)}</div>
+<div class="row"><span class="price">${money(p.price)}</span><button class="add" onclick="addCart(${p.id})">+</button></div></div></article>`).join("")||"<p>No products found.</p>";
 }
-
-let activeShop = "men";
-let activeCategory = "All";
-let cart = [];
-
-function saveProducts() {
-  localStorage.setItem("novaProducts", JSON.stringify(products));
-}
-
-function money(price) {
-  return "৳" + Number(price).toLocaleString("en-US");
-}
-
-function setShop(shop) {
-  activeShop = shop;
-  activeCategory = "All";
-
-  document.getElementById("shopTitle").textContent =
-    shop === "men" ? "Men's Collection" : "Women's Collection";
-
-  document.getElementById("menTab").classList.toggle("active", shop === "men");
-  document.getElementById("womenTab").classList.toggle("active", shop === "women");
-
-  renderFilters();
-  renderProducts();
-}
-
-function renderFilters() {
-  const container = document.getElementById("filters");
-
-  container.innerHTML = categories[activeShop].map(category => `
-    <button class="filter ${category === activeCategory ? "active" : ""}"
-      onclick="setCategory('${category}')">
-      ${category}
-    </button>
-  `).join("");
-}
-
-function setCategory(category) {
-  activeCategory = category;
-  renderFilters();
-  renderProducts();
-}
-
-function renderProducts() {
-  const container = document.getElementById("products");
-
-  const visibleProducts = products.filter(product =>
-    product.shop === activeShop &&
-    (activeCategory === "All" || product.category === activeCategory)
-  );
-
-  if (visibleProducts.length === 0) {
-    container.innerHTML = "<p>No products in this category yet.</p>";
-    return;
-  }
-
-  container.innerHTML = visibleProducts.map(product => `
-    <div class="product">
-      <img src="${product.image || ""}"
-        alt="${product.name}"
-        onclick="showPreview(${product.id})"
-        onerror="this.style.display='none'">
-
-      <h3>${product.name}</h3>
-      <p>${product.category}</p>
-      <p><strong>${money(product.price)}</strong></p>
-
-      <button onclick="addToCart(${product.id})">Add to Bag +</button>
-    </div>
-  `).join("");
-}
-
-function showPreview(id) {
-  const product = products.find(item => item.id === id);
-  if (!product) return;
-
-  document.getElementById("previewContent").innerHTML = `
-    <button onclick="closeModal('previewModal')">CLOSE ×</button>
-    <img src="${product.image || ""}"
-      alt="${product.name}"
-      style="width:100%;max-height:300px;object-fit:contain;margin:15px 0">
-    <h2>${product.name}</h2>
-    <p style="margin:12px 0">${product.category}</p>
-    <h3>${money(product.price)}</h3>
-    <button class="button" onclick="addToCart(${product.id})">ADD TO BAG +</button>
-  `;
-
-  document.getElementById("previewModal").classList.add("show");
-}
-
-function addToCart(id) {
-  const product = products.find(item => item.id === id);
-  if (!product) return;
-
-  cart.push(product);
-  document.getElementById("bagCount").textContent = cart.length;
-  alert("Product added to your bag!");
-}
-
-function openCart() {
-  const container = document.getElementById("cartItems");
-
-  if (cart.length === 0) {
-    container.innerHTML = "<p>Your bag is empty.</p>";
-  } else {
-    container.innerHTML = cart.map((product, index) => `
-      <div style="padding:12px 0;border-bottom:1px solid #ddd">
-        <strong>${product.name}</strong>
-        <p>${money(product.price)}</p>
-        <button onclick="removeFromCart(${index})">Remove</button>
-      </div>
-    `).join("");
-
-    const total = cart.reduce((sum, product) => sum + Number(product.price), 0);
-    container.innerHTML += `<h3 style="margin-top:15px">Total: ${money(total)}</h3>`;
-    container.innerHTML += "<p style='margin-top:10px'>Demo only — payment is not connected.</p>";
-  }
-
-  document.getElementById("cartModal").classList.add("show");
-}
-
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  document.getElementById("bagCount").textContent = cart.length;
-  openCart();
-}
-
-function closeModal(id) {
-  document.getElementById(id).classList.remove("show");
-}
-
-function openAdmin() {
-  updateAdminCategories();
-  updateAdminList();
-  document.getElementById("adminModal").classList.add("show");
-}
-
-function updateAdminCategories() {
-  const shop = document.querySelector('#productForm [name="shop"]').value;
-  const select = document.getElementById("adminCategory");
-
-  select.innerHTML = categories[shop]
-    .filter(category => category !== "All")
-    .map(category => `<option value="${category}">${category}</option>`)
-    .join("");
-}
-
-function updateAdminList() {
-  document.getElementById("adminList").innerHTML =
-    "<hr style='margin:18px 0'><h3>Your Products</h3>" +
-    products.map(product => `
-      <p style="margin:10px 0">
-        ${product.name} — ${money(product.price)}
-        <button onclick="deleteProduct(${product.id})">Delete</button>
-      </p>
-    `).join("");
-}
-
-function deleteProduct(id) {
-  products = products.filter(product => product.id !== id);
-  saveProducts();
-  updateAdminList();
-  renderProducts();
-}
-
-document.getElementById("productForm").addEventListener("submit", function(event) {
-  event.preventDefault();
-
-  const form = new FormData(this);
-
-  const product = {
-    id: Date.now(),
-    name: form.get("name").trim(),
-    price: Number(form.get("price")),
-    shop: form.get("shop"),
-    category: form.get("category"),
-    image: form.get("image").trim()
-  };
-
-  products.push(product);
-  saveProducts();
-
-  setShop(product.shop);
-  updateAdminList();
-  this.reset();
-  updateAdminCategories();
-
-  alert("Product saved successfully!");
-});
-
-document.querySelector('#productForm [name="shop"]')
-  .addEventListener("change", updateAdminCategories);
-
-document.getElementById("adminOpen").onclick = openAdmin;
-
-renderFilters();
-renderProducts();
-updateAdminCategories();
+function toggleLike(id){likes=likes.includes(id)?likes.filter(x=>x!==id):[...likes,id];localStorage.setItem("novaLikes",JSON.stringify(likes));render()}
+function showLikes(){filter="All";renderFilters();document.getElementById("search").value="";let list=products.filter(p=>likes.includes(p.id));document.getElementById("products").innerHTML=list.map(p=>`<article class="card"><div class="photo" onclick="preview(${p.id})"><img src="${safe(p.image)}"><button class="like on" onclick="event.stopPropagation();toggleLike(${p.id})">♥</button></div><div class="info"><div class="stars">★★★★★</div><div class="name">${safe(p.name)}</div><div>${money(p.price)}</div></div></article>`).join("")||"<p>No liked products yet. Tap ♡ on any product.</p>";document.getElementById("shop").scrollIntoView({behavior:"smooth"})}
+function preview(id){let p=products.find(x=>x.id===id);if(!p)return;document.getElementById("previewContent").innerHTML=`<div class="detail"><div><img src="${safe(p.image)}" alt="${safe(p.name)}"></div><div><div class="eyebrow">${safe(p.category)} / NOVA EDIT</div><h2>${safe(p.name)}</h2><div class="stars">★★★★★ <span class="reviews">(${p.reviews||0} reviews)</span></div><h2>${money(p.price)}</h2><p class="small">Premium-inspired style selected for the NOVA collection. Real 360-degree product rotation requires a 3D model or multiple product-angle images.</p><button class="gold" onclick="addCart(${p.id})">ADD TO BAG +</button> <button class="gold" onclick="toggleLike(${p.id});preview(${p.id})">${likes.includes(p.id)?"♥ SAVED":"♡ LIKE"}</button></div></div>`;document.getElementById("previewModal").classList.add("show")}
+function addCart(id){let p=products.find(x=>x.id===id);if(!p)return;cart.push(p);document.getElementById("bagCount").textContent=cart.length;alert("Product added to bag.")}
+function openCart(){let el=document.getElementById("cartItems");if(!cart.length)el.innerHTML="<p>Your bag is empty.</p>";else{el.innerHTML=cart.map((p,i)=>`<div class="cartline"><span>${safe(p.name)} — ${money(p.price)}</span><button class="gold" onclick="removeCart(${i})">Remove</button></div>`).join("");el.innerHTML+=`<h3>Total: ${money(cart.reduce((s,p)=>s+p.price,0))}</h3><p class="small">Demo store only. Online payment is not connected.</p>`}document.getElementById("cartModal").classList.add("show")}
+function removeCart(i){cart.splice(i,1);document.getElementById("bagCount").textContent=cart.length;openCart()}
+function closeModal(id){document.getElementById(id).classList.remove("show")}
+function openAdmin(){adminList();document.getElementById("adminModal").classList.add("show")}
+function adminList(){document.getElementById("adminList").innerHTML="<hr><h3>Your products</h3>"+products.map(p=>`<div class="cartline"><span>${safe(p.name)} — ${money(p.price)}</span><button class="gold" onclick="deleteProduct(${p.id})">Delete</button></div>`).join("")}
+function deleteProduct(id){products=products.filter(p=>p.id!==id);saveProducts();adminList();render()}
+function saveProducts(){try{localStorage.setItem("novaProducts",JSON.stringify(products))}catch(e){}}
+document.getElementById("productForm").addEventListener("submit",e=>{e.preventDefault();let f=new FormData(e.target);products.unshift({id:Date.now(),name:f.get("name").trim(),price:Number(f.get("price")),category:f.get("category"),shop:f.get("shop"),image:f.get("image"),reviews:0});saveProducts();e.target.reset();adminList();render();alert("Product saved on this device.")});
+renderFilters();render();
 </script>
-
 </body>
 </html>
-
