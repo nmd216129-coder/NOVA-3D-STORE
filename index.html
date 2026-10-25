@@ -508,7 +508,7 @@ footer {
 const products = [
   {id:1,name:"NOVA Runner",category:"Sneakers",price:2850,tag:"BESTSELLER",desc:"A clean everyday sneaker with a bold modern profile."},
   {id:2,name:"Essential Hoodie",category:"Hoodies",price:1950,tag:"SIGNATURE",desc:"A relaxed layer for effortless everyday styling."},
-  {id:3,name:"Urban Jacket",category:"Jackets",price:3650,tag:"NEW ARRIVAL",desc:"A versatile outer layer with a sharp structured look."},
+  {id:3,name:"Urban Jacket",category:"Jackets",price:3650,tag:"NEW ARRIVAL",desc:"A versatile outer layer with a sharp structured look.",image:"jacket.png"},
   {id:4,name:"Weekender Bag",category:"Bags",price:2450,tag:"POPULAR",desc:"A refined carry-all for everyday plans and trips."},
   {id:5,name:"NOVA Street Low",category:"Sneakers",price:3100,tag:"LIMITED",desc:"Minimal lines and a versatile streetwear silhouette."},
   {id:6,name:"Premium Zip Hoodie",category:"Hoodies",price:2250,tag:"ESSENTIAL",desc:"An easy zip layer that works from morning to night."},
@@ -537,8 +537,9 @@ function render() {
 
   document.getElementById("products").innerHTML = list.map(p => `
     <article class="product">
-      <div class="art">
-        ${esc(p.category.toUpperCase())}
+      <div class="art" style="${p.image ? `background-image:url('${p.image}');background-size:cover;background-position:center;` : ''}">
+  ${p.image ? '' : esc(p.category.toUpperCase())}
+     
         <span class="tag">${esc(p.tag)}</span>
         <button class="heart ${likes.includes(p.id)?"on":""}"
           onclick="toggleLike(${p.id})">
