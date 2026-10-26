@@ -1,617 +1,1042 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#080808">
-<title>NOVA | Premium Fashion Store</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080807">
+<title>NOVA | 3D Premium Fashion Store</title>
 
 <style>
 :root {
-  --bg:#080808;
-  --panel:#141414;
-  --gold:#d7b56d;
-  --muted:#aaa;
+  --bg:#080807;
+  --panel:#121210;
+  --gold:#d9b66d;
+  --gold2:#f5dfaa;
+  --muted:#aaa69d;
+  --border:#42351f;
 }
-* { box-sizing:border-box }
-html { scroll-behavior:smooth }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; scroll-padding-top:85px; }
 body {
   margin:0;
   background:var(--bg);
-  color:#f7f2e8;
+  color:#f8f4ea;
   font-family:Arial,sans-serif;
 }
-button,a { cursor:pointer }
-a { color:inherit;text-decoration:none }
-.gold { color:var(--gold) }
-
-.top {
-  padding:9px;
-  text-align:center;
+button,a { -webkit-tap-highlight-color:transparent; }
+button { cursor:pointer; font:inherit; }
+a { color:inherit; text-decoration:none; }
+img { max-width:100%; display:block; }
+.gold { color:var(--gold); }
+.container { width:min(1160px,92%); margin:auto; }
+.eyebrow {
   color:var(--gold);
   font-size:10px;
-  letter-spacing:3px;
-  border-bottom:1px solid #302718;
-}
-.header {
-  position:sticky;
-  top:0;
-  z-index:10;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:16px;
-  padding:17px 5%;
-  background:#080808f2;
-  border-bottom:1px solid #302718;
-}
-.logo {
-  font:bold 27px Georgia,serif;
-  letter-spacing:6px;
-  color:var(--gold);
-}
-nav {
-  display:flex;
-  gap:20px;
-  font-size:11px;
-  letter-spacing:2px;
-}
-.action {
-  background:transparent;
-  color:var(--gold);
-  border:1px solid #65502d;
-  padding:10px;
-}
-.hero {
-  min-height:490px;
-  padding:70px 7%;
-  display:grid;
-  grid-template-columns:1.2fr 1fr;
-  align-items:center;
-  gap:25px;
-  background:radial-gradient(
-    ellipse at 75% 45%,#302719,#111 40%,#080808 75%
-  );
-}
-.eyebrow {
-  font-size:11px;
   letter-spacing:4px;
-  color:var(--gold);
-  margin-bottom:17px;
+  text-transform:uppercase;
 }
-.hero h1 {
-  font:clamp(43px,6vw,76px)/1.05 Georgia,serif;
-  margin:0;
+.section { padding:85px 0; }
+.section-title {
+  font:clamp(32px,5vw,52px)/1.1 Georgia,serif;
+  margin:14px 0;
 }
-.hero p,.story p {
-  color:var(--muted);
-  line-height:1.8;
-  max-width:470px;
-}
+.muted { color:var(--muted); line-height:1.8; }
 .btn {
-  display:inline-block;
-  padding:13px 18px;
+  display:inline-flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
   background:var(--gold);
   color:#111;
   border:1px solid var(--gold);
+  padding:14px 20px;
+  font-size:11px;
   font-weight:bold;
-  font-size:12px;
-  letter-spacing:1px;
+  letter-spacing:1.5px;
+  transition:.25s;
 }
-.orbit {
-  width:min(330px,80vw);
-  aspect-ratio:1;
-  border:1px solid #8c6c37;
-  border-radius:50%;
+.btn:hover {
+  background:var(--gold2);
+  transform:translateY(-3px);
+}
+.btn-outline {
+  background:transparent;
+  color:var(--gold);
+}
+.btn-outline:hover { color:#111; }
+
+/* Announcement */
+.announcement {
+  padding:10px;
+  text-align:center;
+  font-size:9px;
+  letter-spacing:3px;
+  color:var(--gold);
+  border-bottom:1px solid #282319;
+}
+
+/* Header */
+.header {
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:#090908f5;
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+.header-inner {
+  min-height:76px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+}
+.logo {
+  color:var(--gold);
+  font:bold 30px Georgia,serif;
+  letter-spacing:6px;
+}
+.nav {
+  display:flex;
+  align-items:center;
+  gap:22px;
+}
+.nav a {
+  font-size:10px;
+  letter-spacing:1.5px;
+  color:#ded8cb;
+}
+.nav a:hover { color:var(--gold); }
+.header-actions { display:flex; gap:8px; }
+.icon-btn {
+  color:var(--gold);
+  background:transparent;
+  border:1px solid var(--border);
+  padding:10px;
+  font-size:11px;
+}
+
+/* 3D Home */
+.hero {
+  position:relative;
+  overflow:hidden;
+  min-height:590px;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  align-items:center;
+  gap:40px;
+  padding:65px 0;
+  background:
+    radial-gradient(ellipse at 78% 50%,#392b17 0%,#17130d 30%,transparent 65%);
+}
+.hero-copy { position:relative; z-index:2; }
+.hero h1 {
+  font:clamp(44px,7vw,83px)/1.02 Georgia,serif;
+  margin:20px 0;
+  letter-spacing:-2px;
+}
+.hero-copy p {
+  max-width:450px;
+  color:var(--muted);
+  line-height:1.9;
+  font-size:14px;
+}
+.hero-buttons {
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:28px;
+}
+.hero-visual {
+  perspective:1100px;
+  min-width:0;
   display:grid;
   place-items:center;
-  margin:auto;
-  box-shadow:inset 0 0 70px #b78c3020,0 0 80px #b78c3020;
-  font:italic 43px Georgia,serif;
-  color:var(--gold);
-  letter-spacing:8px;
 }
-.section { padding:58px 5% }
-.section h2 {
-  font:clamp(29px,4vw,42px) Georgia,serif;
-  margin:0 0 10px;
+.hero-frame {
+  width:min(410px,100%);
+  position:relative;
+  padding:12px;
+  background:linear-gradient(135deg,#8b6a34,#17130d 38%,#d1ad64);
+  border-radius:3px;
+  transform:rotateY(-9deg) rotateX(3deg);
+  box-shadow:20px 30px 65px #000b,0 0 45px #d5ad5420;
+  animation:float 5s ease-in-out infinite;
+  transform-style:preserve-3d;
+}
+.hero-frame img {
+  width:100%;
+  height:430px;
+  object-fit:cover;
+  object-position:center;
+  background:#1b1813;
+}
+.hero-label {
+  position:absolute;
+  bottom:28px;
+  left:28px;
+  right:28px;
+  padding:16px;
+  background:#080807d9;
+  border:1px solid #c8a65d55;
+  backdrop-filter:blur(8px);
+}
+.hero-label strong {
+  display:block;
+  font:23px Georgia,serif;
+  color:var(--gold2);
+}
+.hero-label span {
+  display:block;
+  margin-top:6px;
+  color:#c1b9a8;
+  font-size:9px;
+  letter-spacing:2px;
+}
+@keyframes float {
+  0%,100% { transform:translateY(0) rotateY(-9deg) rotateX(3deg); }
+  50% { transform:translateY(-12px) rotateY(-5deg) rotateX(1deg); }
+}
+
+/* Trust strip */
+.trust-strip {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.trust-item {
+  padding:24px 10px;
+  text-align:center;
+  border-right:1px solid var(--border);
+}
+.trust-item:last-child { border-right:0; }
+.trust-item strong {
+  display:block;
+  color:var(--gold);
+  font:20px Georgia,serif;
+}
+.trust-item span {
+  display:block;
+  margin-top:7px;
+  font-size:9px;
+  letter-spacing:1.5px;
+  color:var(--muted);
+}
+
+/* Shop */
+.shop-head {
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
 }
 .filters {
   display:flex;
   gap:8px;
   flex-wrap:wrap;
-  margin:22px 0;
+  margin:28px 0;
 }
 .filter {
-  padding:9px 12px;
-  background:#111;
-  color:#ddd;
-  border:1px solid #493a23;
-  font-size:11px;
+  padding:10px 13px;
+  background:#11110f;
+  border:1px solid var(--border);
+  color:#d4cbbb;
+  font-size:10px;
+  letter-spacing:1px;
 }
 .filter.active,.filter:hover {
   background:var(--gold);
   color:#111;
 }
-.products {
+.product-grid {
   display:grid;
-  grid-template-columns:repeat(4,minmax(0,1fr));
-  gap:17px;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:22px;
 }
 .product {
-  background:var(--panel);
-  border:1px solid #30291d;
+  min-width:0;
+  background:linear-gradient(150deg,#171612,#0c0c0b);
+  border:1px solid #342b1c;
+  overflow:hidden;
+  transition:transform .3s,border-color .3s;
 }
-.art {
-  height:210px;
+.product:hover {
+  transform:translateY(-6px);
+  border-color:#927342;
+}
+.product-art {
+  height:350px;
+  position:relative;
+  overflow:hidden;
+  background:radial-gradient(ellipse,#40301b,#11110f 72%);
+  perspective:900px;
+}
+.product-art img {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transition:transform .65s,filter .4s;
+  transform:scale(1.01);
+}
+.product:hover .product-art img {
+  transform:scale(1.08);
+  filter:brightness(1.08);
+}
+.product-art img.missing { display:none; }
+.image-fallback {
+  position:absolute;
+  inset:0;
   display:grid;
   place-items:center;
-  position:relative;
-  background:radial-gradient(circle,#392d1b,#111 70%);
-  font:italic 26px Georgia,serif;
-  color:var(--gold);
   text-align:center;
+  color:var(--gold);
+  font:italic 27px Georgia,serif;
+  letter-spacing:3px;
+}
+.image-fallback span {
+  display:block;
+  font:9px Arial,sans-serif;
+  letter-spacing:3px;
+  margin-top:10px;
+}
+.product-art.has-image .image-fallback { display:none; }
+.product-tag {
+  position:absolute;
+  top:12px;
+  left:12px;
+  padding:7px 9px;
+  background:var(--gold);
+  color:#111;
+  font-size:9px;
+  letter-spacing:1px;
 }
 .heart {
   position:absolute;
-  right:9px;
-  top:9px;
-  background:#090909cc;
-  border:1px solid #65502d;
+  right:12px;
+  top:12px;
+  width:36px;
+  height:36px;
+  border:1px solid #b59a6355;
+  background:#080807c9;
   color:white;
   border-radius:50%;
-  width:34px;
-  height:34px;
   font-size:19px;
 }
-.heart.on { color:var(--gold) }
-.tag {
-  position:absolute;
-  left:9px;
-  top:9px;
-  background:var(--gold);
-  color:#111;
-  padding:5px;
+.heart.on { color:var(--gold); }
+.product-info { padding:19px; }
+.stars { color:var(--gold); letter-spacing:2px; font-size:11px; }
+.product-info h3 {
+  font:23px Georgia,serif;
+  margin:12px 0 7px;
+}
+.category {
+  color:#9d9688;
   font-size:9px;
-}
-.info { padding:14px }
-.stars {
-  color:var(--gold);
-  letter-spacing:2px;
-  font-size:12px;
-}
-.info h3 {
-  font:20px Georgia,serif;
-  margin:9px 0;
-}
-.cat {
-  font-size:10px;
-  color:#aaa;
   letter-spacing:2px;
   text-transform:uppercase;
 }
-.bottom {
+.product-bottom {
+  margin-top:18px;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  gap:6px;
-  margin-top:15px;
+  gap:9px;
   flex-wrap:wrap;
 }
-.price { color:#f2d99e;font-weight:bold }
-.small {
+.price { color:var(--gold2); font-weight:bold; }
+.small-btn {
+  padding:10px;
   background:transparent;
-  border:1px solid #65502d;
+  border:1px solid var(--border);
   color:var(--gold);
-  padding:8px;
-  font-size:10px;
+  font-size:9px;
+  letter-spacing:1px;
 }
-.story {
+.small-btn:hover { background:var(--gold); color:#111; }
+
+/* 3D Featured product */
+.featured {
+  background:
+    radial-gradient(ellipse at 20% 50%,#2d2111,transparent 60%),
+    #10100e;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.featured-grid {
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:35px;
   align-items:center;
-  background:#0e0e0e;
+  gap:55px;
 }
-.story-art {
-  min-height:240px;
+.featured-stage {
+  perspective:1200px;
+  padding:22px;
+}
+.featured-card {
+  position:relative;
+  overflow:hidden;
+  border:1px solid #a4864a;
+  background:#17140e;
+  transform:rotateY(5deg);
+  box-shadow:15px 25px 60px #0009;
+  transition:transform .5s;
+}
+.featured-card:hover { transform:rotateY(0deg) scale(1.015); }
+.featured-card img {
+  width:100%;
+  height:460px;
+  object-fit:cover;
+  transition:transform .6s;
+}
+.featured-card:hover img { transform:scale(1.045); }
+.featured-card figcaption {
+  position:absolute;
+  bottom:0;
+  left:0;
+  right:0;
+  padding:18px;
+  background:linear-gradient(transparent,#050505ed);
+  color:var(--gold2);
+  font:23px Georgia,serif;
+}
+.featured-copy h2 {
+  font:clamp(36px,5vw,57px)/1.1 Georgia,serif;
+  margin:16px 0;
+}
+.featured-copy p { line-height:1.9; color:var(--muted); }
+.featured-price { font:28px Georgia,serif; color:var(--gold); margin:22px 0; }
+
+/* About */
+.about-grid {
   display:grid;
-  place-items:center;
-  border:1px solid #65502d;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:35px;
+}
+.about-card {
+  padding:32px;
+  min-height:210px;
+  background:linear-gradient(135deg,#1b1913,#0d0d0b);
+  border:1px solid var(--border);
+  transition:transform .35s,border-color .35s;
+}
+.about-card:hover {
+  transform:translateY(-7px) rotateX(2deg);
+  border-color:#a1844b;
+}
+.about-number {
   color:var(--gold);
-  font:italic 45px Georgia,serif;
-  letter-spacing:8px;
-  background:radial-gradient(circle,#2b2114,#090909);
+  font:35px Georgia,serif;
 }
-.features {
+.about-card h3 { font:25px Georgia,serif; }
+.about-card p { color:var(--muted); line-height:1.8; font-size:13px; }
+
+/* Counter */
+.counter-section {
+  background:linear-gradient(120deg,#1c170e,#090908 70%);
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.counter-grid {
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+  grid-template-columns:repeat(4,1fr);
   gap:12px;
+  margin-top:35px;
 }
-.feature {
+.counter-card {
   text-align:center;
-  padding:23px;
-  border:1px solid #302718;
-  background:#111;
+  padding:28px 12px;
+  background:#0b0b0ad9;
+  border:1px solid var(--border);
 }
-.feature strong {
-  display:block;
+.counter-number {
   color:var(--gold);
-  font:21px Georgia,serif;
-  margin-bottom:8px;
+  font:clamp(30px,4vw,45px) Georgia,serif;
 }
-.feature span { font-size:12px;color:#aaa }
+.counter-card p {
+  color:var(--muted);
+  font-size:10px;
+  letter-spacing:1.5px;
+}
+
+/* Newsletter style call to action */
+.cta {
+  padding:65px 25px;
+  text-align:center;
+  border:1px solid var(--border);
+  background:radial-gradient(ellipse,#2b2113,#10100e 70%);
+}
+.cta h2 { font:clamp(32px,5vw,48px) Georgia,serif; }
+.cta p { color:var(--muted); line-height:1.8; }
+
+/* Footer */
 footer {
-  padding:26px 5%;
-  border-top:1px solid #302718;
-  color:#aaa;
+  padding:35px 0;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  font-size:11px;
+}
+.footer-inner {
   display:flex;
   justify-content:space-between;
-  gap:12px;
+  align-items:center;
+  gap:18px;
   flex-wrap:wrap;
-  font-size:12px;
 }
+.footer-logo { color:var(--gold); font:25px Georgia,serif; letter-spacing:5px; }
+
+/* Modals */
 .modal {
   position:fixed;
   inset:0;
-  z-index:80;
-  background:#000c;
+  z-index:100;
   display:none;
   align-items:center;
   justify-content:center;
   padding:16px;
+  background:#000d;
 }
-.modal.show { display:flex }
-.box {
-  width:min(620px,100%);
+.modal.show { display:flex; }
+.modal-box {
+  width:min(650px,100%);
   max-height:85vh;
   overflow:auto;
-  background:#111;
-  border:1px solid #725a32;
-  padding:20px;
+  padding:22px;
+  background:#11110f;
+  border:1px solid #8b6d38;
 }
-.modalhead {
+.modal-head {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  border-bottom:1px solid var(--border);
+  padding-bottom:15px;
+}
+.modal-head h2 { font:27px Georgia,serif; margin:0; }
+.close-btn {
+  background:transparent;
+  color:var(--gold);
+  border:1px solid var(--border);
+  padding:9px;
+}
+.cart-line {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  border-bottom:1px solid #302718;
-  padding-bottom:12px;
-}
-.modalhead h2 {
-  font:26px Georgia,serif;
-  margin:0;
-}
-.close {
-  background:transparent;
-  color:white;
-  border:1px solid #666;
-  padding:8px;
-}
-.line {
-  display:flex;
-  justify-content:space-between;
   gap:12px;
-  padding:13px 0;
-  border-bottom:1px solid #302718;
+  padding:15px 0;
+  border-bottom:1px solid #302719;
 }
-.line button {
-  background:transparent;
+.cart-line button {
   color:var(--gold);
-  border:1px solid #65502d;
+  background:transparent;
+  border:1px solid var(--border);
+  padding:7px 11px;
 }
 .toast {
   position:fixed;
-  z-index:120;
-  bottom:18px;
+  z-index:200;
+  bottom:20px;
   left:50%;
   transform:translateX(-50%);
   background:var(--gold);
   color:#111;
-  padding:12px 18px;
+  padding:13px 18px;
+  font-size:12px;
   display:none;
+  max-width:90%;
+  text-align:center;
 }
-.toast.show { display:block }
+.toast.show { display:block; }
+.empty { padding:25px 0; color:var(--muted); }
 
-/* 15-second cinematic intro */
-#nova-intro {
-  position:fixed;
-  inset:0;
-  z-index:9999;
-  background:#030303;
-  overflow:hidden;
-  color:#f4d99b;
-}
-#nova-intro canvas {
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  z-index:1;
-}
-#nova-intro .title {
-  position:absolute;
-  z-index:3;
-  top:13%;
-  left:0;
-  right:0;
-  text-align:center;
-  font-family:Georgia,serif;
-  letter-spacing:8px;
-  animation:titleFade 15s forwards;
-}
-#nova-intro .title strong {
-  display:block;
-  font-size:clamp(40px,9vw,75px);
-  text-shadow:0 0 30px #d7b56d88;
-}
-#nova-intro .title span {
-  font:10px Arial,sans-serif;
-  letter-spacing:5px;
-}
-#nova-intro .caption {
-  position:absolute;
-  z-index:3;
-  bottom:13%;
-  left:0;
-  right:0;
-  text-align:center;
-  padding:0 20px;
-  font:clamp(13px,3vw,20px) Georgia,serif;
-  letter-spacing:2px;
-}
-#skip {
-  position:absolute;
-  z-index:5;
-  bottom:20px;
-  right:18px;
-  background:#111d;
-  color:var(--gold);
-  border:1px solid #987744;
-  padding:10px 14px;
-}
-@keyframes titleFade {
-  0%,10% { opacity:0;filter:blur(8px) }
-  20%,70% { opacity:1;filter:blur(0) }
-  90%,100% { opacity:0 }
-}
+/* Responsive */
 @media(max-width:850px) {
-  .products { grid-template-columns:repeat(2,minmax(0,1fr)) }
-  .hero { grid-template-columns:1fr }
-  .story { grid-template-columns:1fr }
-  .header { flex-wrap:wrap }
-  nav {
+  .hero { grid-template-columns:1fr; padding:50px 0; gap:35px; }
+  .hero-copy { text-align:center; }
+  .hero-copy p { margin-inline:auto; }
+  .hero-buttons { justify-content:center; }
+  .hero-frame { width:min(390px,92%); transform:none; }
+  .hero-frame img { height:390px; }
+  .featured-grid { grid-template-columns:1fr; gap:20px; }
+  .featured-copy { padding:0 10px 15px; }
+  .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+  .product-art { height:300px; }
+  .counter-grid { grid-template-columns:repeat(2,1fr); }
+}
+@media(max-width:560px) {
+  .section { padding:58px 0; }
+  .header-inner { min-height:66px; flex-wrap:wrap; padding:12px 0; }
+  .logo { font-size:25px; }
+  .nav {
     order:3;
     width:100%;
     justify-content:center;
-    gap:15px;
+    gap:20px;
+    padding:8px 0 2px;
   }
-  .art { height:175px }
+  .nav a { font-size:9px; }
+  .icon-btn { padding:8px; }
+  .hero { min-height:auto; }
+  .hero h1 { font-size:48px; }
+  .hero-frame img { height:350px; }
+  .trust-item { padding:18px 4px; }
+  .trust-item strong { font-size:17px; }
+  .trust-item span { font-size:8px; letter-spacing:.7px; }
+  .product-grid { gap:10px; }
+  .product-art { height:220px; }
+  .product-info { padding:12px; }
+  .product-info h3 { font-size:18px; }
+  .product-bottom { align-items:flex-start; }
+  .small-btn { padding:9px 7px; }
+  .featured-stage { padding:5px; }
+  .featured-card img { height:360px; }
+  .about-grid { grid-template-columns:1fr; }
+  .about-card { min-height:auto; padding:24px; }
+  .counter-card { padding:22px 5px; }
+  .counter-card p { font-size:9px; }
 }
-@media(max-width:480px) {
-  .section { padding:42px 4% }
-  .hero { padding:50px 6% }
-  .info { padding:10px }
-  .info h3 { font-size:17px }
-  .bottom { justify-content:flex-start }
-  .logo { font-size:23px }
+@media(prefers-reduced-motion:reduce) {
+  *,*::before,*::after {
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    scroll-behavior:auto !important;
+    transition-duration:.01ms !important;
+  }
 }
 </style>
 </head>
 
 <body>
-<div id="nova-intro">
-  <div class="title">
-    <strong>NOVA</strong>
-    <span>THE ART OF EVERYDAY LUXURY</span>
-  </div>
-  <div class="caption" id="caption">A NEW STANDARD OF STYLE</div>
-  <button id="skip">SKIP INTRO ↗</button>
+
+<div class="announcement">
+  NOVA SIGNATURE COLLECTION · MODERN STYLE · TIMELESS DESIGN
 </div>
 
-<div class="top">PREMIUM-INSPIRED STYLE • NOVA SIGNATURE COLLECTION</div>
-
 <header class="header">
-  <a class="logo" href="#home">NOVA</a>
-  <nav>
-    <a href="#home">HOME</a>
-    <a href="#shop">SHOP</a>
-    <a href="#story">OUR STORY</a>
-  </nav>
-  <div>
-    <button class="action" onclick="showLikes()">♡ <span id="likesCount">0</span></button>
-    <button class="action" onclick="openCart()">BAG (<span id="cartCount">0</span>)</button>
+  <div class="container header-inner">
+    <a class="logo" href="#home">NOVA</a>
+
+    <nav class="nav">
+      <a href="#home">HOME</a>
+      <a href="#shop">SHOP</a>
+      <a href="#about">ABOUT</a>
+      <a href="#counter">EXPERIENCE</a>
+    </nav>
+
+    <div class="header-actions">
+      <button class="icon-btn" onclick="showWishlist()">
+        ♡ <span id="wishCount">0</span>
+      </button>
+      <button class="icon-btn" onclick="openCart()">
+        BAG (<span id="cartCount">0</span>)
+      </button>
+    </div>
   </div>
 </header>
 
+<!-- 3D HOME -->
 <main>
 <section class="hero" id="home">
-  <div>
-    <div class="eyebrow">NOVA SIGNATURE COLLECTION</div>
+  <div class="container" style="display:contents"></div>
+  <div class="container hero-copy">
+    <div class="eyebrow">NOVA PREMIUM COLLECTION</div>
     <h1>Quiet luxury.<br><span class="gold">Bold presence.</span></h1>
-    <p>Discover timeless essentials designed for the way you move. Premium-inspired fashion, clean details, and everyday confidence.</p>
-    <a class="btn" href="#shop">EXPLORE COLLECTION</a>
+    <p>
+      Discover statement pieces, refined details, and modern essentials
+      made for everyday confidence. Explore the NOVA fashion experience.
+    </p>
+    <div class="hero-buttons">
+      <a class="btn" href="#shop">EXPLORE COLLECTION ↗</a>
+      <a class="btn btn-outline" href="#about">DISCOVER NOVA</a>
+    </div>
   </div>
-  <div class="orbit">NOVA</div>
+
+  <div class="hero-visual">
+    <div class="hero-frame">
+      <img src="images/jacket.png"
+           alt="NOVA premium jacket"
+           onerror="this.onerror=null;this.src='jacket.png';">
+      <div class="hero-label">
+        <strong>NOVA Outerwear</strong>
+        <span>TEXTURE · FORM · PRESENCE</span>
+      </div>
+    </div>
+  </div>
 </section>
 
+<!-- STORE BENEFITS -->
+<div class="container">
+  <div class="trust-strip">
+    <div class="trust-item">
+      <strong>01</strong><span>CURATED STYLE</span>
+    </div>
+    <div class="trust-item">
+      <strong>02</strong><span>MODERN DESIGN</span>
+    </div>
+    <div class="trust-item">
+      <strong>03</strong><span>TIMELESS DETAILS</span>
+    </div>
+  </div>
+</div>
+
+<!-- SHOP -->
 <section class="section" id="shop">
-  <div class="eyebrow">CURATED FOR YOU</div>
-  <h2>Shop the collection</h2>
-  <p style="color:#aaa">Find your next everyday favorite.</p>
-  <div class="filters" id="filters">
-    <button class="filter active" data-filter="All">ALL</button>
-    <button class="filter" data-filter="Sneakers">SNEAKERS</button>
-    <button class="filter" data-filter="Hoodies">HOODIES</button>
-    <button class="filter" data-filter="Jackets">JACKETS</button>
-    <button class="filter" data-filter="Bags">BAGS</button>
-    <button class="filter" data-filter="Watches">WATCHES</button>
-  </div>
-  <div class="products" id="products"></div>
-</section>
+  <div class="container">
+    <div class="shop-head">
+      <div>
+        <div class="eyebrow">THE COLLECTION</div>
+        <h2 class="section-title">Shop the collection</h2>
+        <p class="muted">Find your next signature piece.</p>
+      </div>
+      <div class="eyebrow">NOVA / 2026</div>
+    </div>
 
-<section class="section story" id="story">
-  <div class="story-art">NOVA</div>
-  <div>
-    <div class="eyebrow">LESS, BUT BETTER</div>
-    <h2>Made to stand out.<br><span class="gold">Built for every day.</span></h2>
-    <p>NOVA brings together modern silhouettes and timeless inspiration. Explore this fashion storefront demo and discover your everyday style.</p>
-    <a class="btn" href="#shop">FIND YOUR STYLE</a>
+    <div class="filters" id="filters">
+      <button class="filter active" data-filter="All">ALL</button>
+      <button class="filter" data-filter="Jackets">JACKETS</button>
+      <button class="filter" data-filter="Racing">RACING</button>
+      <button class="filter" data-filter="Sneakers">SNEAKERS</button>
+    </div>
+
+    <div class="product-grid" id="products"></div>
   </div>
 </section>
 
+<!-- FEATURED 3D-STYLE PRODUCT -->
+<section class="section featured" id="featured">
+  <div class="container featured-grid">
+    <div class="featured-stage">
+      <figure class="featured-card">
+        <img src="images/jacket.png"
+             alt="Featured NOVA jacket"
+             onerror="this.onerror=null;this.src='jacket.png';">
+        <figcaption>NOVA · SIGNATURE OUTERWEAR</figcaption>
+      </figure>
+    </div>
+
+    <div class="featured-copy">
+      <div class="eyebrow">THE FEATURED PIECE</div>
+      <h2>Designed to make<br><span class="gold">an impression.</span></h2>
+      <p>
+        Explore the details of our featured outerwear. Rich tones,
+        dramatic lighting, and a premium-inspired presentation bring
+        the product into focus.
+      </p>
+      <div class="featured-price">৳3,650</div>
+      <button class="btn" onclick="addCart(1)">ADD TO BAG +</button>
+      <button class="btn btn-outline" onclick="openProduct(1)">VIEW DETAILS</button>
+    </div>
+  </div>
+</section>
+
+<!-- 3D ABOUT -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="eyebrow">THE NOVA PHILOSOPHY</div>
+    <h2 class="section-title">Less, but better.</h2>
+    <p class="muted" style="max-width:600px">
+      A modern fashion storefront concept built around clean presentation,
+      rich materials, and a refined black-and-gold visual identity.
+    </p>
+
+    <div class="about-grid">
+      <article class="about-card">
+        <div class="about-number">01 / FORM</div>
+        <h3>Modern silhouettes</h3>
+        <p>Explore structured outerwear and everyday pieces with a confident, contemporary look.</p>
+      </article>
+
+      <article class="about-card">
+        <div class="about-number">02 / DETAIL</div>
+        <h3>Every detail matters</h3>
+        <p>Product imagery, texture, spacing, and lighting work together to create a premium presentation.</p>
+      </article>
+
+      <article class="about-card">
+        <div class="about-number">03 / STYLE</div>
+        <h3>Made for your style</h3>
+        <p>Browse different product categories and discover pieces that fit your personal style.</p>
+      </article>
+
+      <article class="about-card">
+        <div class="about-number">04 / EXPERIENCE</div>
+        <h3>Simple shopping</h3>
+        <p>Explore product details, save favorites, and try the interactive demo shopping bag.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 3D COUNTER -->
+<section class="section counter-section" id="counter">
+  <div class="container">
+    <div class="eyebrow">THE NOVA EXPERIENCE</div>
+    <h2 class="section-title">Style in every detail.</h2>
+    <p class="muted">A closer look at the demo storefront experience.</p>
+
+    <div class="counter-grid">
+      <div class="counter-card">
+        <div class="counter-number" data-target="4">0</div>
+        <p>PRODUCT STYLES</p>
+      </div>
+      <div class="counter-card">
+        <div class="counter-number" data-target="4">0</div>
+        <p>STYLE PRINCIPLES</p>
+      </div>
+      <div class="counter-card">
+        <div class="counter-number" data-target="100" data-suffix="%">0</div>
+        <p>RESPONSIVE LAYOUT</p>
+      </div>
+      <div class="counter-card">
+        <div class="counter-number" data-target="24" data-suffix="/7">0</div>
+        <p>DEMO ACCESS</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
 <section class="section">
-  <div class="eyebrow">THE NOVA EXPERIENCE</div>
-  <h2>Details make the difference</h2>
-  <div class="features">
-    <div class="feature"><strong>01 / EDITED</strong><span>Thoughtfully curated styles</span></div>
-    <div class="feature"><strong>02 / TIMELESS</strong><span>Designed beyond trends</span></div>
-    <div class="feature"><strong>03 / PERSONAL</strong><span>Find pieces that feel like you</span></div>
+  <div class="container">
+    <div class="cta">
+      <div class="eyebrow">YOUR NEXT SIGNATURE LOOK</div>
+      <h2>Make your style <span class="gold">NOVA.</span></h2>
+      <p>Explore the collection and find your next favorite piece.</p>
+      <a class="btn" href="#shop">SHOP THE COLLECTION ↗</a>
+    </div>
   </div>
 </section>
 </main>
 
 <footer>
-  <span>© 2026 NOVA — DEMO STORE</span>
-  <span>HOME · SHOP · OUR STORY</span>
-  <span>Made for a modern wardrobe.</span>
+  <div class="container footer-inner">
+    <a class="footer-logo" href="#home">NOVA</a>
+    <span>© 2026 NOVA — FASHION STORE DEMO</span>
+    <a href="#home">BACK TO TOP ↑</a>
+  </div>
 </footer>
 
+<!-- CART MODAL -->
 <div class="modal" id="cartModal">
-  <div class="box">
-    <div class="modalhead">
+  <div class="modal-box">
+    <div class="modal-head">
       <h2>Your bag</h2>
-      <button class="close" onclick="closeModal('cartModal')">CLOSE ✕</button>
+      <button class="close-btn" onclick="closeModal('cartModal')">CLOSE ✕</button>
     </div>
     <div id="cartItems"></div>
-    <div class="line">
+    <div class="cart-line">
       <strong>Total</strong>
-      <strong class="price" id="total">৳0</strong>
+      <strong class="price" id="cartTotal">৳0</strong>
     </div>
-    <button class="btn" onclick="toast('Demo only — payment is not connected')">CONTINUE (DEMO)</button>
-    <p class="cat">No real payment is collected.</p>
+    <button class="btn" onclick="toast('Demo only — payment is not connected')">
+      CONTINUE · DEMO
+    </button>
+    <p class="muted" style="font-size:11px">No real payment is collected.</p>
   </div>
 </div>
 
+<!-- PRODUCT DETAIL MODAL -->
 <div class="modal" id="detailModal">
-  <div class="box">
-    <div class="modalhead">
+  <div class="modal-box">
+    <div class="modal-head">
       <h2>Product details</h2>
-      <button class="close" onclick="closeModal('detailModal')">CLOSE ✕</button>
+      <button class="close-btn" onclick="closeModal('detailModal')">CLOSE ✕</button>
     </div>
-    <div id="detail"></div>
+    <div id="productDetail"></div>
   </div>
 </div>
+
 <div class="toast" id="toast"></div>
 
 <script>
+/* PRODUCT DATA
+   Change the image paths to match your GitHub file names.
+*/
 const products = [
-  {id:1,name:"NOVA Runner",category:"Sneakers",price:2850,tag:"BESTSELLER",desc:"A clean everyday sneaker with a bold modern profile."},
-  {id:2,name:"Essential Hoodie",category:"Hoodies",price:1950,tag:"SIGNATURE",desc:"A relaxed layer for effortless everyday styling."},
-  {id:3,name:"Urban Jacket",category:"Jackets",price:3650,tag:"NEW ARRIVAL",desc:"A versatile outer layer with a sharp structured look.",image:"file_000000003ec48207835f868da9731fe1.png"},aa
-  {id:4,name:"Weekender Bag",category:"Bags",price:2450,tag:"POPULAR",desc:"A refined carry-all for everyday plans and trips."},
-  {id:5,name:"NOVA Street Low",category:"Sneakers",price:3100,tag:"LIMITED",desc:"Minimal lines and a versatile streetwear silhouette."},
-  {id:6,name:"Premium Zip Hoodie",category:"Hoodies",price:2250,tag:"ESSENTIAL",desc:"An easy zip layer that works from morning to night."},
-  {id:7,name:"Classic Overshirt",category:"Jackets",price:2950,tag:"EDITOR'S PICK",desc:"A clean overshirt that adds structure to a simple fit."},
-  {id:8,name:"NOVA Timepiece",category:"Watches",price:4250,tag:"TIMELESS",desc:"A classic-inspired accessory with a restrained finish."}
+  {
+    id:1,
+    name:"NOVA Premium Jacket",
+    category:"Jackets",
+    price:3650,
+    tag:"FEATURED",
+    image:"images/jacket.png",
+    fallback:"jacket.png",
+    desc:"A premium-inspired brown jacket presented in a dramatic luxury style."
+  },
+  {
+    id:2,
+    name:"Racing Collection Jacket",
+    category:"Racing",
+    price:2200,
+    tag:"RACING STYLE",
+    image:"images/ferrari.jpg",
+    fallback:"",
+    desc:"A bold racing-inspired color-block jacket for a sporty look."
+  },
+  {
+    id:3,
+    name:"NOVA Street Sneakers",
+    category:"Sneakers",
+    price:3100,
+    tag:"STREET STYLE",
+    image:"images/shoes.jpg",
+    fallback:"",
+    desc:"A versatile streetwear sneaker with a clean modern silhouette."
+  },
+  {
+    id:4,
+    name:"Classic Leather Jacket",
+    category:"Jackets",
+    price:3450,
+    tag:"SIGNATURE",
+    image:"images/leather-jacket.jpg",
+    fallback:"",
+    desc:"A classic brown leather-look jacket with refined details."
+  }
 ];
 
-let likes = [];
 let cart = [];
-let filter = "All";
-let onlyLikes = false;
+let wishlist = [];
+let currentFilter = "All";
+let wishlistOnly = false;
 
-const money = n => "৳" + Number(n).toLocaleString("en-BD");
+const money = n => "৳" + Number(n).toLocaleString("en-US");
 
-function esc(s) {
-  return String(s).replace(/[&<>"]/g,c=>({
-    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"
-  }[c]));
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    "&":"&amp;",
+    "<":"&lt;",
+    ">":"&gt;",
+    '"':"&quot;",
+    "'":"&#39;"
+  }[char]));
 }
 
-function render() {
-  const list = products.filter(p =>
-    (filter === "All" || p.category === filter) &&
-    (!onlyLikes || likes.includes(p.id))
+function productImage(p) {
+  const fallback = p.fallback
+    ? `onerror="if(this.dataset.fallback){this.onerror=null;this.src=this.dataset.fallback;this.dataset.fallback=''}else{this.classList.add('missing');this.parentElement.classList.remove('has-image')}"`
+    : `onerror="this.classList.add('missing');this.parentElement.classList.remove('has-image')"`;
+
+  return `<img src="${escapeHTML(p.image)}"
+    alt="${escapeHTML(p.name)}"
+    data-fallback="${escapeHTML(p.fallback || '')}"
+    ${fallback}>`;
+}
+
+function renderProducts() {
+  const visible = products.filter(p =>
+    (currentFilter === "All" || p.category === currentFilter) &&
+    (!wishlistOnly || wishlist.includes(p.id))
   );
 
-  document.getElementById("products").innerHTML = list.map(p => `
-    <article class="product">
-      <div class="art" style="${p.image ? `background-image:url('${p.image}');background-size:cover;background-position:center;` : ''}">
-  ${p.image ? '' : esc(p.category.toUpperCase())}
-     
-        <span class="tag">${esc(p.tag)}</span>
-        <button class="heart ${likes.includes(p.id)?"on":""}"
-          onclick="toggleLike(${p.id})">
-          ${likes.includes(p.id)?"♥":"♡"}
-        </button>
-      </div>
-      <div class="info">
-        <div class="stars">★★★★★ <span style="color:#999">5.0</span></div>
-        <h3>${esc(p.name)}</h3>
-        <div class="cat">${esc(p.category)}</div>
-        <div class="bottom">
-          <span class="price">${money(p.price)}</span>
-          <button class="small" onclick="preview(${p.id})">QUICK VIEW</button>
-          <button class="small" onclick="addCart(${p.id})">ADD +</button>
+  const grid = document.getElementById("products");
+
+  if (!visible.length) {
+    grid.innerHTML = '<p class="empty">No products to display. Try another category or save a favorite.</p>';
+  } else {
+    grid.innerHTML = visible.map(p => `
+      <article class="product">
+        <div class="product-art has-image">
+          ${productImage(p)}
+          <span class="product-tag">${escapeHTML(p.tag)}</span>
+          <button class="heart ${wishlist.includes(p.id) ? "on" : ""}"
+            aria-label="Toggle wishlist"
+            onclick="toggleWishlist(${p.id})">
+            ${wishlist.includes(p.id) ? "♥" : "♡"}
+          </button>
+          <div class="image-fallback">
+            NOVA
+            <span>${escapeHTML(p.category.toUpperCase())}</span>
+          </div>
         </div>
-      </div>
-    </article>
-  `).join("");
+        <div class="product-info">
+          <div class="stars">★★★★★</div>
+          <h3>${escapeHTML(p.name)}</h3>
+          <div class="category">${escapeHTML(p.category)}</div>
+          <div class="product-bottom">
+            <span class="price">${money(p.price)}</span>
+            <button class="small-btn" onclick="openProduct(${p.id})">DETAILS</button>
+            <button class="small-btn" onclick="addCart(${p.id})">ADD +</button>
+          </div>
+        </div>
+      </article>
+    `).join("");
+  }
 
-  document.getElementById("likesCount").textContent = likes.length;
+  document.getElementById("wishCount").textContent = wishlist.length;
   document.getElementById("cartCount").textContent =
-    cart.reduce((sum,item)=>sum+item.qty,0);
+    cart.reduce((sum, item) => sum + item.qty, 0);
 }
 
-document.getElementById("filters").onclick = e => {
-  const button = e.target.closest("[data-filter]");
+document.getElementById("filters").addEventListener("click", event => {
+  const button = event.target.closest("[data-filter]");
   if (!button) return;
-  filter = button.dataset.filter;
-  onlyLikes = false;
-  document.querySelectorAll(".filter").forEach(b =>
-    b.classList.toggle("active",b===button)
-  );
-  render();
-};
 
-function toggleLike(id) {
-  likes = likes.includes(id)
-    ? likes.filter(x=>x!==id)
-    : likes.concat(id);
-  render();
-  toast(likes.includes(id)?"Added to wishlist":"Removed from wishlist");
+  currentFilter = button.dataset.filter;
+  wishlistOnly = false;
+
+  document.querySelectorAll(".filter").forEach(b =>
+    b.classList.toggle("active", b === button)
+  );
+
+  renderProducts();
+});
+
+function toggleWishlist(id) {
+  wishlist = wishlist.includes(id)
+    ? wishlist.filter(x => x !== id)
+    : [...wishlist, id];
+
+  renderProducts();
+  toast(wishlist.includes(id) ? "Added to wishlist" : "Removed from wishlist");
 }
 
-function showLikes() {
-  onlyLikes = true;
-  filter = "All";
+function showWishlist() {
+  wishlistOnly = true;
+  currentFilter = "All";
+
   document.querySelectorAll(".filter").forEach(b =>
-    b.classList.toggle("active",b.dataset.filter==="All")
+    b.classList.toggle("active", b.dataset.filter === "All")
   );
-  render();
+
+  renderProducts();
   document.getElementById("shop").scrollIntoView({behavior:"smooth"});
-  toast(likes.length?"Showing wishlist":"Wishlist is empty");
+  toast(wishlist.length ? "Showing saved products" : "Your wishlist is empty");
 }
 
-function preview(id) {
-  const p = products.find(x=>x.id===id);
-  document.getElementById("detail").innerHTML = `
-    <div class="art" style="height:170px">${esc(p.category.toUpperCase())}</div>
-    <h2>${esc(p.name)}</h2>
+function openProduct(id) {
+  const p = products.find(item => item.id === id);
+  if (!p) return;
+
+  document.getElementById("productDetail").innerHTML = `
+    <div class="product-art has-image" style="height:320px;margin-top:18px">
+      ${productImage(p)}
+      <div class="image-fallback">NOVA</div>
+    </div>
+    <h2 style="font:30px Georgia,serif">${escapeHTML(p.name)}</h2>
     <p class="price">${money(p.price)}</p>
-    <p style="color:#aaa;line-height:1.7">${esc(p.desc)}</p>
-    <p class="cat">${esc(p.category)}</p>
-    <button class="btn" onclick="addCart(${p.id});closeModal('detailModal')">ADD TO BAG</button>
+    <p class="muted">${escapeHTML(p.desc)}</p>
+    <p class="category">${escapeHTML(p.category)}</p>
+    <button class="btn" onclick="addCart(${p.id});closeModal('detailModal')">
+      ADD TO BAG +
+    </button>
   `;
+
   openModal("detailModal");
 }
 
 function addCart(id) {
-  const item = cart.find(x=>x.id===id);
+  const item = cart.find(x => x.id === id);
+
   if (item) item.qty++;
-  else cart.push({id,qty:1});
-  render();
+  else cart.push({id, qty:1});
+
+  renderProducts();
   toast("Added to your bag");
 }
 
@@ -621,35 +1046,50 @@ function openCart() {
 }
 
 function renderCart() {
-  const el = document.getElementById("cartItems");
+  const target = document.getElementById("cartItems");
 
-  el.innerHTML = cart.length ? cart.map((item,i) => {
-    const p = products.find(x=>x.id===item.id);
-    return `
-      <div class="line">
-        <div>
-          <strong>${esc(p.name)}</strong>
-          <div class="cat">${money(p.price)} × ${item.qty}</div>
+  if (!cart.length) {
+    target.innerHTML = '<p class="empty">Your bag is empty.</p>';
+  } else {
+    target.innerHTML = cart.map(item => {
+      const p = products.find(x => x.id === item.id);
+      return `
+        <div class="cart-line">
+          <div>
+            <strong>${escapeHTML(p.name)}</strong>
+            <div class="muted">${money(p.price)} × ${item.qty}</div>
+          </div>
+          <div>
+            <strong class="price">${money(p.price * item.qty)}</strong>
+            <div style="margin-top:8px;display:flex;gap:5px">
+              <button onclick="changeQty(${p.id},-1)">−</button>
+              <button onclick="changeQty(${p.id},1)">+</button>
+            </div>
+          </div>
         </div>
-        <div>
-          <strong class="price">${money(p.price*item.qty)}</strong>
-          <button onclick="removeCart(${i})">−</button>
-          <button onclick="addCart(${p.id});renderCart()">+</button>
-        </div>
-      </div>
-    `;
-  }).join("") : '<p style="color:#aaa">Your bag is empty.</p>';
+      `;
+    }).join("");
+  }
 
-  document.getElementById("total").textContent = money(
-    cart.reduce((sum,item)=>
-      sum+products.find(p=>p.id===item.id).price*item.qty,0)
-  );
+  const total = cart.reduce((sum, item) => {
+    const p = products.find(x => x.id === item.id);
+    return sum + p.price * item.qty;
+  }, 0);
+
+  document.getElementById("cartTotal").textContent = money(total);
+  document.getElementById("cartCount").textContent =
+    cart.reduce((sum, item) => sum + item.qty, 0);
 }
 
-function removeCart(i) {
-  cart.splice(i,1);
-  render();
+function changeQty(id, amount) {
+  const item = cart.find(x => x.id === id);
+  if (!item) return;
+
+  item.qty += amount;
+  if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
+
   renderCart();
+  renderProducts();
 }
 
 function openModal(id) {
@@ -659,192 +1099,70 @@ function closeModal(id) {
   document.getElementById(id).classList.remove("show");
 }
 
-document.querySelectorAll(".modal").forEach(m => {
-  m.onclick = e => {
-    if (e.target===m) m.classList.remove("show");
-  };
+document.querySelectorAll(".modal").forEach(modal => {
+  modal.addEventListener("click", event => {
+    if (event.target === modal) modal.classList.remove("show");
+  });
 });
 
-let toastTimer;
+document.addEventListener("keydown", event => {
+  if (event.key === "Escape") {
+    document.querySelectorAll(".modal").forEach(m => m.classList.remove("show"));
+  }
+});
+
+let toastTimeout;
 function toast(message) {
   const el = document.getElementById("toast");
   el.textContent = message;
   el.classList.add("show");
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(()=>el.classList.remove("show"),2200);
+  clearTimeout(toastTimeout);
+  toastTimeout = setTimeout(() => el.classList.remove("show"), 2300);
 }
 
-/* Intro animation */
-function skipIntro() {
-  const intro = document.getElementById("nova-intro");
-  if (intro) intro.remove();
-}
-document.getElementById("skip").onclick = skipIntro;
+/* Animated counters */
+const counters = document.querySelectorAll(".counter-number");
+let countersStarted = false;
 
-const captions = [
-  "A NEW STANDARD OF STYLE",
-  "STEP INTO THE NOVA SHOWROOM",
-  "SNEAKERS. CLEAN SILHOUETTES.",
-  "PREMIUM LAYERS. TIMELESS DETAILS.",
-  "DISCOVER YOUR SIGNATURE LOOK"
-];
+function animateCounters() {
+  if (countersStarted) return;
+  countersStarted = true;
 
-const started = Date.now();
+  counters.forEach(el => {
+    const target = Number(el.dataset.target);
+    const suffix = el.dataset.suffix || "";
+    const duration = 1000;
+    const start = performance.now();
 
-function captionLoop() {
-  const elapsed = (Date.now()-started)/1000;
-  if (elapsed < 15) {
-    document.getElementById("caption").textContent =
-      captions[Math.min(4,Math.floor(elapsed/3))];
-    requestAnimationFrame(captionLoop);
-  }
-}
-captionLoop();
-setTimeout(skipIntro,15000);
+    function tick(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      el.textContent = Math.round(target * eased) + suffix;
 
-/* Simple animated 3D showroom using Three.js */
-function load3D() {
-  if (!window.THREE) return;
-
-  try {
-    const root = document.getElementById("nova-intro");
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x050505);
-    scene.fog = new THREE.Fog(0x050505,10,30);
-
-    const camera = new THREE.PerspectiveCamera(
-      55,innerWidth/innerHeight,0.1,100
-    );
-    camera.position.set(0,2.3,13);
-
-    const renderer = new THREE.WebGLRenderer({antialias:true});
-    renderer.setPixelRatio(Math.min(devicePixelRatio,1.5));
-    renderer.setSize(innerWidth,innerHeight);
-    renderer.domElement.style.zIndex = "1";
-    root.prepend(renderer.domElement);
-
-    scene.add(new THREE.HemisphereLight(0xe8d4a0,0x17120b,2));
-
-    const light = new THREE.PointLight(0xffd58a,3,30);
-    light.position.set(0,6,0);
-    scene.add(light);
-
-    const gold = new THREE.MeshStandardMaterial({
-      color:0xc8a65f,metalness:.65,roughness:.3
-    });
-    const dark = new THREE.MeshStandardMaterial({
-      color:0x171717,roughness:.5
-    });
-    const glass = new THREE.MeshStandardMaterial({
-      color:0x6d6553,transparent:true,opacity:.35,metalness:.3
-    });
-
-    function box(w,h,d,material,x,y,z) {
-      const object = new THREE.Mesh(
-        new THREE.BoxGeometry(w,h,d),material
-      );
-      object.position.set(x,y,z);
-      scene.add(object);
-      return object;
+      if (progress < 1) requestAnimationFrame(tick);
     }
 
-    /* Store floor and back wall */
-    box(18,.25,22,dark,0,-.15,-3);
-    box(18,8,.25,dark,0,3.8,-8);
-
-    /* Glass entrance doors */
-    const left = box(2.1,4,.1,glass,-1.1,2,4.5);
-    const right = box(2.1,4,.1,glass,1.1,2,4.5);
-    box(.08,4.2,.16,gold,0,2,4.5);
-    box(5,.1,.15,gold,0,4.1,4.5);
-
-    /* NOVA sign */
-    const canvas = document.createElement("canvas");
-    canvas.width = 1024;
-    canvas.height = 256;
-    const ctx = canvas.getContext("2d");
-    ctx.fillStyle = "#090807";
-    ctx.fillRect(0,0,1024,256);
-    ctx.textAlign = "center";
-    ctx.fillStyle = "#e3c47c";
-    ctx.font = "bold 150px Georgia";
-    ctx.shadowColor = "#e3b85b";
-    ctx.shadowBlur = 25;
-    ctx.fillText("N O V A",512,145);
-
-    const sign = new THREE.Mesh(
-      new THREE.PlaneGeometry(6,1.5),
-      new THREE.MeshBasicMaterial({
-        map:new THREE.CanvasTexture(canvas)
-      })
-    );
-    sign.position.set(0,4,-7.8);
-    scene.add(sign);
-
-    /* Display pedestals and stylized fashion items */
-    const fabric = new THREE.MeshStandardMaterial({
-      color:0x403321,roughness:.45
-    });
-
-    [-4.5,-1.5,1.5,4.5].forEach((x,i) => {
-      box(1.8,.65,1.4,dark,x,.3,-1.5);
-      box(1.7,.05,1.3,gold,x,.66,-1.5);
-
-      if (i===0) {
-        /* Sneaker-inspired shape */
-        box(1.2,.2,.5,fabric,x,.9,-1.5);
-        box(.8,.35,.45,gold,x,.99,-1.5);
-      } else if (i===1 || i===2) {
-        /* Hoodie / jacket-inspired shape */
-        box(.85,1,.3,fabric,x,1.25,-1.5);
-        box(.3,.7,.25,fabric,x-.55,1.3,-1.5);
-        box(.3,.7,.25,fabric,x+.55,1.3,-1.5);
-      } else {
-        /* Bag-inspired shape */
-        box(1,.7,.35,fabric,x,1.15,-1.5);
-        box(.6,.4,.1,gold,x,1.7,-1.5);
-      }
-    });
-
-    const start = Date.now();
-
-    function animate() {
-      if (!root.isConnected) return;
-
-      const t = (Date.now()-start)/1000;
-      const open = Math.min(1,Math.max(0,(t-2)/2));
-
-      left.position.x = -1.1-open*1.4;
-      right.position.x = 1.1+open*1.4;
-
-      camera.position.z = t<8 ? 13-t*1.2 : 3.4-(t-8)*.4;
-      camera.position.y = 2.2+Math.sin(t*.7)*.12;
-      camera.lookAt(0,1.7,-2);
-
-      renderer.render(scene,camera);
-      requestAnimationFrame(animate);
-    }
-
-    animate();
-
-    window.addEventListener("resize",()=>{
-      camera.aspect = innerWidth/innerHeight;
-      camera.updateProjectionMatrix();
-      renderer.setSize(innerWidth,innerHeight);
-    });
-
-  } catch(error) {
-    console.log("3D intro could not load.",error);
-  }
+    requestAnimationFrame(tick);
+  });
 }
 
-/* Load Three.js for the intro scene */
-const script = document.createElement("script");
-script.src = "https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js";
-script.onload = load3D;
-document.head.appendChild(script);
+const counterSection = document.getElementById("counter");
 
-render();
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => {
+    if (entries.some(entry => entry.isIntersecting)) {
+      animateCounters();
+      observer.disconnect();
+    }
+  }, {threshold:0.2});
+
+  observer.observe(counterSection);
+} else {
+  animateCounters();
+}
+
+/* Start the page without a separate intro animation */
+renderProducts();
 </script>
 </body>
 </html>
