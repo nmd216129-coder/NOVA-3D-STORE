@@ -2,1171 +2,127 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080807">
-<title>NOVA | 3D Premium Fashion Store</title>
-
-<style>
-:root {
-  --bg:#080807;
-  --panel:#121210;
-  --gold:#d9b66d;
-  --gold2:#f5dfaa;
-  --muted:#aaa69d;
-  --border:#42351f;
-}
-* { box-sizing:border-box; }
-html { scroll-behavior:smooth; scroll-padding-top:85px; }
-body {
-  margin:0;
-  background:var(--bg);
-  color:#f8f4ea;
-  font-family:Arial,sans-serif;
-}
-button,a { -webkit-tap-highlight-color:transparent; }
-button { cursor:pointer; font:inherit; }
-a { color:inherit; text-decoration:none; }
-img { max-width:100%; display:block; }
-.gold { color:var(--gold); }
-.container { width:min(1160px,92%); margin:auto; }
-.eyebrow {
-  color:var(--gold);
-  font-size:10px;
-  letter-spacing:4px;
-  text-transform:uppercase;
-}
-.section { padding:85px 0; }
-.section-title {
-  font:clamp(32px,5vw,52px)/1.1 Georgia,serif;
-  margin:14px 0;
-}
-.muted { color:var(--muted); line-height:1.8; }
-.btn {
-  display:inline-flex;
-  justify-content:center;
-  align-items:center;
-  gap:8px;
-  background:var(--gold);
-  color:#111;
-  border:1px solid var(--gold);
-  padding:14px 20px;
-  font-size:11px;
-  font-weight:bold;
-  letter-spacing:1.5px;
-  transition:.25s;
-}
-.btn:hover {
-  background:var(--gold2);
-  transform:translateY(-3px);
-}
-.btn-outline {
-  background:transparent;
-  color:var(--gold);
-}
-.btn-outline:hover { color:#111; }
-
-/* Announcement */
-.announcement {
-  padding:10px;
-  text-align:center;
-  font-size:9px;
-  letter-spacing:3px;
-  color:var(--gold);
-  border-bottom:1px solid #282319;
-}
-
-/* Header */
-.header {
-  position:sticky;
-  top:0;
-  z-index:50;
-  background:#090908f5;
-  backdrop-filter:blur(14px);
-  border-bottom:1px solid var(--border);
-}
-.header-inner {
-  min-height:76px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:18px;
-}
-.logo {
-  color:var(--gold);
-  font:bold 30px Georgia,serif;
-  letter-spacing:6px;
-}
-.nav {
-  display:flex;
-  align-items:center;
-  gap:22px;
-}
-.nav a {
-  font-size:10px;
-  letter-spacing:1.5px;
-  color:#ded8cb;
-}
-.nav a:hover { color:var(--gold); }
-.header-actions { display:flex; gap:8px; }
-.icon-btn {
-  color:var(--gold);
-  background:transparent;
-  border:1px solid var(--border);
-  padding:10px;
-  font-size:11px;
-}
-
-/* 3D Home */
-.hero {
-  position:relative;
-  overflow:hidden;
-  min-height:590px;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:40px;
-  padding:65px 0;
-  background:
-    radial-gradient(ellipse at 78% 50%,#392b17 0%,#17130d 30%,transparent 65%);
-}
-.hero-copy { position:relative; z-index:2; }
-.hero h1 {
-  font:clamp(44px,7vw,83px)/1.02 Georgia,serif;
-  margin:20px 0;
-  letter-spacing:-2px;
-}
-.hero-copy p {
-  max-width:450px;
-  color:var(--muted);
-  line-height:1.9;
-  font-size:14px;
-}
-.hero-buttons {
-  display:flex;
-  flex-wrap:wrap;
-  gap:12px;
-  margin-top:28px;
-}
-.hero-visual {
-  perspective:1100px;
-  min-width:0;
-  display:grid;
-  place-items:center;
-}
-.hero-frame {
-  width:min(410px,100%);
-  position:relative;
-  padding:12px;
-  background:linear-gradient(135deg,#8b6a34,#17130d 38%,#d1ad64);
-  border-radius:3px;
-  transform:rotateY(-9deg) rotateX(3deg);
-  box-shadow:20px 30px 65px #000b,0 0 45px #d5ad5420;
-  animation:float 5s ease-in-out infinite;
-  transform-style:preserve-3d;
-}
-.hero-frame img {
-  width:100%;
-  height:430px;
-  object-fit:cover;
-  object-position:center;
-  background:#1b1813;
-}
-.hero-label {
-  position:absolute;
-  bottom:28px;
-  left:28px;
-  right:28px;
-  padding:16px;
-  background:#080807d9;
-  border:1px solid #c8a65d55;
-  backdrop-filter:blur(8px);
-}
-.hero-label strong {
-  display:block;
-  font:23px Georgia,serif;
-  color:var(--gold2);
-}
-.hero-label span {
-  display:block;
-  margin-top:6px;
-  color:#c1b9a8;
-  font-size:9px;
-  letter-spacing:2px;
-}
-@keyframes float {
-  0%,100% { transform:translateY(0) rotateY(-9deg) rotateX(3deg); }
-  50% { transform:translateY(-12px) rotateY(-5deg) rotateX(1deg); }
-}
-
-/* Trust strip */
-.trust-strip {
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-.trust-item {
-  padding:24px 10px;
-  text-align:center;
-  border-right:1px solid var(--border);
-}
-.trust-item:last-child { border-right:0; }
-.trust-item strong {
-  display:block;
-  color:var(--gold);
-  font:20px Georgia,serif;
-}
-.trust-item span {
-  display:block;
-  margin-top:7px;
-  font-size:9px;
-  letter-spacing:1.5px;
-  color:var(--muted);
-}
-
-/* Shop */
-.shop-head {
-  display:flex;
-  align-items:end;
-  justify-content:space-between;
-  gap:20px;
-  flex-wrap:wrap;
-}
-.filters {
-  display:flex;
-  gap:8px;
-  flex-wrap:wrap;
-  margin:28px 0;
-}
-.filter {
-  padding:10px 13px;
-  background:#11110f;
-  border:1px solid var(--border);
-  color:#d4cbbb;
-  font-size:10px;
-  letter-spacing:1px;
-}
-.filter.active,.filter:hover {
-  background:var(--gold);
-  color:#111;
-}
-.product-grid {
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:22px;
-}
-.product {
-  min-width:0;
-  background:linear-gradient(150deg,#171612,#0c0c0b);
-  border:1px solid #342b1c;
-  overflow:hidden;
-  transition:transform .3s,border-color .3s;
-}
-.product:hover {
-  transform:translateY(-6px);
-  border-color:#927342;
-}
-.product-art {
-  height:350px;
-  position:relative;
-  overflow:hidden;
-  background:radial-gradient(ellipse,#40301b,#11110f 72%);
-  perspective:900px;
-}
-.product-art img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform .65s,filter .4s;
-  transform:scale(1.01);
-}
-.product:hover .product-art img {
-  transform:scale(1.08);
-  filter:brightness(1.08);
-}
-.product-art img.missing { display:none; }
-.image-fallback {
-  position:absolute;
-  inset:0;
-  display:grid;
-  place-items:center;
-  text-align:center;
-  color:var(--gold);
-  font:italic 27px Georgia,serif;
-  letter-spacing:3px;
-}
-.image-fallback span {
-  display:block;
-  font:9px Arial,sans-serif;
-  letter-spacing:3px;
-  margin-top:10px;
-}
-.product-art.has-image .image-fallback { display:none; }
-.product-tag {
-  position:absolute;
-  top:12px;
-  left:12px;
-  padding:7px 9px;
-  background:var(--gold);
-  color:#111;
-  font-size:9px;
-  letter-spacing:1px;
-}
-.heart {
-  position:absolute;
-  right:12px;
-  top:12px;
-  width:36px;
-  height:36px;
-  border:1px solid #b59a6355;
-  background:#080807c9;
-  color:white;
-  border-radius:50%;
-  font-size:19px;
-}
-.heart.on { color:var(--gold); }
-.product-info { padding:19px; }
-.stars { color:var(--gold); letter-spacing:2px; font-size:11px; }
-.product-info h3 {
-  font:23px Georgia,serif;
-  margin:12px 0 7px;
-}
-.category {
-  color:#9d9688;
-  font-size:9px;
-  letter-spacing:2px;
-  text-transform:uppercase;
-}
-.product-bottom {
-  margin-top:18px;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:9px;
-  flex-wrap:wrap;
-}
-.price { color:var(--gold2); font-weight:bold; }
-.small-btn {
-  padding:10px;
-  background:transparent;
-  border:1px solid var(--border);
-  color:var(--gold);
-  font-size:9px;
-  letter-spacing:1px;
-}
-.small-btn:hover { background:var(--gold); color:#111; }
-
-/* 3D Featured product */
-.featured {
-  background:
-    radial-gradient(ellipse at 20% 50%,#2d2111,transparent 60%),
-    #10100e;
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-.featured-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  align-items:center;
-  gap:55px;
-}
-.featured-stage {
-  perspective:1200px;
-  padding:22px;
-}
-.featured-card {
-  position:relative;
-  overflow:hidden;
-  border:1px solid #a4864a;
-  background:#17140e;
-  transform:rotateY(5deg);
-  box-shadow:15px 25px 60px #0009;
-  transition:transform .5s;
-}
-.featured-card:hover { transform:rotateY(0deg) scale(1.015); }
-.featured-card img {
-  width:100%;
-  height:460px;
-  object-fit:cover;
-  transition:transform .6s;
-}
-.featured-card:hover img { transform:scale(1.045); }
-.featured-card figcaption {
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  padding:18px;
-  background:linear-gradient(transparent,#050505ed);
-  color:var(--gold2);
-  font:23px Georgia,serif;
-}
-.featured-copy h2 {
-  font:clamp(36px,5vw,57px)/1.1 Georgia,serif;
-  margin:16px 0;
-}
-.featured-copy p { line-height:1.9; color:var(--muted); }
-.featured-price { font:28px Georgia,serif; color:var(--gold); margin:22px 0; }
-
-/* About */
-.about-grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:24px;
-  margin-top:35px;
-}
-.about-card {
-  padding:32px;
-  min-height:210px;
-  background:linear-gradient(135deg,#1b1913,#0d0d0b);
-  border:1px solid var(--border);
-  transition:transform .35s,border-color .35s;
-}
-.about-card:hover {
-  transform:translateY(-7px) rotateX(2deg);
-  border-color:#a1844b;
-}
-.about-number {
-  color:var(--gold);
-  font:35px Georgia,serif;
-}
-.about-card h3 { font:25px Georgia,serif; }
-.about-card p { color:var(--muted); line-height:1.8; font-size:13px; }
-
-/* Counter */
-.counter-section {
-  background:linear-gradient(120deg,#1c170e,#090908 70%);
-  border-top:1px solid var(--border);
-  border-bottom:1px solid var(--border);
-}
-.counter-grid {
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:12px;
-  margin-top:35px;
-}
-.counter-card {
-  text-align:center;
-  padding:28px 12px;
-  background:#0b0b0ad9;
-  border:1px solid var(--border);
-}
-.counter-number {
-  color:var(--gold);
-  font:clamp(30px,4vw,45px) Georgia,serif;
-}
-.counter-card p {
-  color:var(--muted);
-  font-size:10px;
-  letter-spacing:1.5px;
-}
-
-/* Newsletter style call to action */
-.cta {
-  padding:65px 25px;
-  text-align:center;
-  border:1px solid var(--border);
-  background:radial-gradient(ellipse,#2b2113,#10100e 70%);
-}
-.cta h2 { font:clamp(32px,5vw,48px) Georgia,serif; }
-.cta p { color:var(--muted); line-height:1.8; }
-
-/* Footer */
-footer {
-  padding:35px 0;
-  border-top:1px solid var(--border);
-  color:var(--muted);
-  font-size:11px;
-}
-.footer-inner {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:18px;
-  flex-wrap:wrap;
-}
-.footer-logo { color:var(--gold); font:25px Georgia,serif; letter-spacing:5px; }
-
-/* Modals */
-.modal {
-  position:fixed;
-  inset:0;
-  z-index:100;
-  display:none;
-  align-items:center;
-  justify-content:center;
-  padding:16px;
-  background:#000d;
-}
-.modal.show { display:flex; }
-.modal-box {
-  width:min(650px,100%);
-  max-height:85vh;
-  overflow:auto;
-  padding:22px;
-  background:#11110f;
-  border:1px solid #8b6d38;
-}
-.modal-head {
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:12px;
-  border-bottom:1px solid var(--border);
-  padding-bottom:15px;
-}
-.modal-head h2 { font:27px Georgia,serif; margin:0; }
-.close-btn {
-  background:transparent;
-  color:var(--gold);
-  border:1px solid var(--border);
-  padding:9px;
-}
-.cart-line {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:12px;
-  padding:15px 0;
-  border-bottom:1px solid #302719;
-}
-.cart-line button {
-  color:var(--gold);
-  background:transparent;
-  border:1px solid var(--border);
-  padding:7px 11px;
-}
-.toast {
-  position:fixed;
-  z-index:200;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:var(--gold);
-  color:#111;
-  padding:13px 18px;
-  font-size:12px;
-  display:none;
-  max-width:90%;
-  text-align:center;
-}
-.toast.show { display:block; }
-.empty { padding:25px 0; color:var(--muted); }
-
-/* Responsive */
-@media(max-width:850px) {
-  .hero { grid-template-columns:1fr; padding:50px 0; gap:35px; }
-  .hero-copy { text-align:center; }
-  .hero-copy p { margin-inline:auto; }
-  .hero-buttons { justify-content:center; }
-  .hero-frame { width:min(390px,92%); transform:none; }
-  .hero-frame img { height:390px; }
-  .featured-grid { grid-template-columns:1fr; gap:20px; }
-  .featured-copy { padding:0 10px 15px; }
-  .product-grid { grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
-  .product-art { height:300px; }
-  .counter-grid { grid-template-columns:repeat(2,1fr); }
-}
-@media(max-width:560px) {
-  .section { padding:58px 0; }
-  .header-inner { min-height:66px; flex-wrap:wrap; padding:12px 0; }
-  .logo { font-size:25px; }
-  .nav {
-    order:3;
-    width:100%;
-    justify-content:center;
-    gap:20px;
-    padding:8px 0 2px;
-  }
-  .nav a { font-size:9px; }
-  .icon-btn { padding:8px; }
-  .hero { min-height:auto; }
-  .hero h1 { font-size:48px; }
-  .hero-frame img { height:350px; }
-  .trust-item { padding:18px 4px; }
-  .trust-item strong { font-size:17px; }
-  .trust-item span { font-size:8px; letter-spacing:.7px; }
-  .product-grid { gap:10px; }
-  .product-art { height:220px; }
-  .product-info { padding:12px; }
-  .product-info h3 { font-size:18px; }
-  .product-bottom { align-items:flex-start; }
-  .small-btn { padding:9px 7px; }
-  .featured-stage { padding:5px; }
-  .featured-card img { height:360px; }
-  .about-grid { grid-template-columns:1fr; }
-  .about-card { min-height:auto; padding:24px; }
-  .counter-card { padding:22px 5px; }
-  .counter-card p { font-size:9px; }
-}
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {
-    animation-duration:.01ms !important;
-    animation-iteration-count:1 !important;
-    scroll-behavior:auto !important;
-    transition-duration:.01ms !important;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#080808">
+  <title>NOVA | Premium Fashion</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="products.js" defer></script>
+  <script src="app.js" defer></script>
 </head>
-
 <body>
+  <div class="announcement">NOVA SIGNATURE COLLECTION · MODERN LUXURY</div>
 
-<div class="announcement">
-  NOVA SIGNATURE COLLECTION · MODERN STYLE · TIMELESS DESIGN
-</div>
-
-<header class="header">
-  <div class="container header-inner">
-    <a class="logo" href="#home">NOVA</a>
-
-    <nav class="nav">
-      <a href="#home">HOME</a>
+  <header class="header">
+    <a class="logo" href="index.html">NOVA</a>
+    <nav>
+      <a href="index.html">HOME</a>
       <a href="#shop">SHOP</a>
-      <a href="#about">ABOUT</a>
-      <a href="#counter">EXPERIENCE</a>
+      <a href="about.html">ABOUT</a>
+      <a href="counter.html">COUNTER</a>
     </nav>
-
     <div class="header-actions">
-      <button class="icon-btn" onclick="showWishlist()">
-        ♡ <span id="wishCount">0</span>
-      </button>
-      <button class="icon-btn" onclick="openCart()">
-        BAG (<span id="cartCount">0</span>)
-      </button>
+      <button onclick="showWishlist()">♡ <span id="wishCount">0</span></button>
+      <button onclick="showCart()">BAG <span id="cartCount">0</span></button>
+      <a class="download" href="download.html">DOWNLOAD</a>
     </div>
-  </div>
-</header>
+  </header>
 
-<!-- 3D HOME -->
-<main>
-<section class="hero" id="home">
-  <div class="container" style="display:contents"></div>
-  <div class="container hero-copy">
-    <div class="eyebrow">NOVA PREMIUM COLLECTION</div>
-    <h1>Quiet luxury.<br><span class="gold">Bold presence.</span></h1>
-    <p>
-      Discover statement pieces, refined details, and modern essentials
-      made for everyday confidence. Explore the NOVA fashion experience.
-    </p>
-    <div class="hero-buttons">
-      <a class="btn" href="#shop">EXPLORE COLLECTION ↗</a>
-      <a class="btn btn-outline" href="#about">DISCOVER NOVA</a>
-    </div>
-  </div>
-
-  <div class="hero-visual">
-    <div class="hero-frame">
-      <img src="images/jacket.png"
-           alt="NOVA premium jacket"
-           onerror="this.onerror=null;this.src='jacket.png';">
-      <div class="hero-label">
-        <strong>NOVA Outerwear</strong>
-        <span>TEXTURE · FORM · PRESENCE</span>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">THE NOVA PREMIUM EDIT</p>
+        <h1>Quiet luxury.<br><span>Bold presence.</span></h1>
+        <p class="muted">Discover modern essentials, statement outerwear and timeless everyday style.</p>
+        <a class="gold-button" href="#shop">EXPLORE COLLECTION ↗</a>
+        <a class="outline-button" href="about.html">DISCOVER NOVA</a>
       </div>
-    </div>
-  </div>
-</section>
+      <div class="hero-visual">
+        <div class="hero-ring"></div>
+        <div class="hero-label">
+          <span>THE SIGNATURE EDIT</span>
+          <h2>NOVA<br>ATELIER</h2>
+          <p>FORM · TEXTURE · PRESENCE</p>
+        </div>
+      </div>
+    </section>
 
-<!-- STORE BENEFITS -->
-<div class="container">
-  <div class="trust-strip">
-    <div class="trust-item">
-      <strong>01</strong><span>CURATED STYLE</span>
-    </div>
-    <div class="trust-item">
-      <strong>02</strong><span>MODERN DESIGN</span>
-    </div>
-    <div class="trust-item">
-      <strong>03</strong><span>TIMELESS DETAILS</span>
-    </div>
-  </div>
-</div>
+    <section class="stats">
+      <a href="counter.html"><strong>01</strong><span>CURATED STYLE</span></a>
+      <a href="counter.html"><strong>02</strong><span>MODERN DESIGN</span></a>
+      <a href="counter.html"><strong>03</strong><span>TIMELESS DETAILS</span></a>
+    </section>
 
-<!-- SHOP -->
-<section class="section" id="shop">
-  <div class="container">
-    <div class="shop-head">
+    <section class="section" id="shop">
+      <p class="eyebrow">THE COLLECTION</p>
+      <h2>Shop the collection</h2>
+      <p class="muted">Find your next signature piece.</p>
+
+      <div class="shop-tools">
+        <div class="filters">
+          <button class="filter active" data-filter="All">ALL</button>
+          <button class="filter" data-filter="Men">MEN</button>
+          <button class="filter" data-filter="Women">WOMEN</button>
+          <button class="filter" data-filter="Jackets">JACKETS</button>
+          <button class="filter" data-filter="Racing">RACING</button>
+          <button class="filter" data-filter="Sneakers">SNEAKERS</button>
+          <button class="filter" data-filter="Bags">BAGS</button>
+          <button class="filter" data-filter="Watches">WATCHES</button>
+        </div>
+        <span class="collection-mark">NOVA / 2026</span>
+      </div>
+
+      <div id="productGrid" class="product-grid"></div>
+    </section>
+
+    <section class="featured">
+      <div class="featured-image" id="featuredImage">
+        <span>NOVA SIGNATURE</span>
+      </div>
       <div>
-        <div class="eyebrow">THE COLLECTION</div>
-        <h2 class="section-title">Shop the collection</h2>
-        <p class="muted">Find your next signature piece.</p>
+        <p class="eyebrow">THE FEATURED PIECE</p>
+        <h2>Designed to make<br><span>an impression.</span></h2>
+        <p class="muted">Explore refined details, rich textures and a premium-inspired presentation.</p>
+        <p class="featured-price">৳3,650</p>
+        <a href="#shop" class="gold-button">EXPLORE PRODUCTS</a>
       </div>
-      <div class="eyebrow">NOVA / 2026</div>
-    </div>
+    </section>
 
-    <div class="filters" id="filters">
-      <button class="filter active" data-filter="All">ALL</button>
-      <button class="filter" data-filter="Jackets">JACKETS</button>
-      <button class="filter" data-filter="Racing">RACING</button>
-      <button class="filter" data-filter="Sneakers">SNEAKERS</button>
-    </div>
-
-    <div class="product-grid" id="products"></div>
-  </div>
-</section>
-
-<!-- FEATURED 3D-STYLE PRODUCT -->
-<section class="section featured" id="featured">
-  <div class="container featured-grid">
-    <div class="featured-stage">
-      <figure class="featured-card">
-        <img src="images/jacket.png"
-             alt="Featured NOVA jacket"
-             onerror="this.onerror=null;this.src='jacket.png';">
-        <figcaption>NOVA · SIGNATURE OUTERWEAR</figcaption>
-      </figure>
-    </div>
-
-    <div class="featured-copy">
-      <div class="eyebrow">THE FEATURED PIECE</div>
-      <h2>Designed to make<br><span class="gold">an impression.</span></h2>
-      <p>
-        Explore the details of our featured outerwear. Rich tones,
-        dramatic lighting, and a premium-inspired presentation bring
-        the product into focus.
-      </p>
-      <div class="featured-price">৳3,650</div>
-      <button class="btn" onclick="addCart(1)">ADD TO BAG +</button>
-      <button class="btn btn-outline" onclick="openProduct(1)">VIEW DETAILS</button>
-    </div>
-  </div>
-</section>
-
-<!-- 3D ABOUT -->
-<section class="section" id="about">
-  <div class="container">
-    <div class="eyebrow">THE NOVA PHILOSOPHY</div>
-    <h2 class="section-title">Less, but better.</h2>
-    <p class="muted" style="max-width:600px">
-      A modern fashion storefront concept built around clean presentation,
-      rich materials, and a refined black-and-gold visual identity.
-    </p>
-
-    <div class="about-grid">
-      <article class="about-card">
-        <div class="about-number">01 / FORM</div>
-        <h3>Modern silhouettes</h3>
-        <p>Explore structured outerwear and everyday pieces with a confident, contemporary look.</p>
-      </article>
-
-      <article class="about-card">
-        <div class="about-number">02 / DETAIL</div>
-        <h3>Every detail matters</h3>
-        <p>Product imagery, texture, spacing, and lighting work together to create a premium presentation.</p>
-      </article>
-
-      <article class="about-card">
-        <div class="about-number">03 / STYLE</div>
-        <h3>Made for your style</h3>
-        <p>Browse different product categories and discover pieces that fit your personal style.</p>
-      </article>
-
-      <article class="about-card">
-        <div class="about-number">04 / EXPERIENCE</div>
-        <h3>Simple shopping</h3>
-        <p>Explore product details, save favorites, and try the interactive demo shopping bag.</p>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- 3D COUNTER -->
-<section class="section counter-section" id="counter">
-  <div class="container">
-    <div class="eyebrow">THE NOVA EXPERIENCE</div>
-    <h2 class="section-title">Style in every detail.</h2>
-    <p class="muted">A closer look at the demo storefront experience.</p>
-
-    <div class="counter-grid">
-      <div class="counter-card">
-        <div class="counter-number" data-target="4">0</div>
-        <p>PRODUCT STYLES</p>
+    <section class="section experience">
+      <p class="eyebrow">THE NOVA EXPERIENCE</p>
+      <h2>Details make the difference.</h2>
+      <div class="experience-grid">
+        <article><strong>01 / STYLE</strong><p>Carefully selected fashion essentials.</p></article>
+        <article><strong>02 / DESIGN</strong><p>Modern presentation with a dimensional look.</p></article>
+        <article><strong>03 / DISCOVER</strong><p>Explore products in an interactive viewer.</p></article>
       </div>
-      <div class="counter-card">
-        <div class="counter-number" data-target="4">0</div>
-        <p>STYLE PRINCIPLES</p>
+    </section>
+  </main>
+
+  <footer>
+    <a class="logo" href="index.html">NOVA</a>
+    <p>© 2026 NOVA — FASHION STORE DEMO</p>
+    <a href="about.html">ABOUT NOVA</a>
+  </footer>
+
+  <div class="viewer" id="productViewer">
+    <div class="viewer-panel">
+      <button class="viewer-close" onclick="closeViewer()">CLOSE ✕</button>
+      <div class="viewer-stage" id="viewerStage">
+        <img id="viewerImage" src="" alt="Product preview">
       </div>
-      <div class="counter-card">
-        <div class="counter-number" data-target="100" data-suffix="%">0</div>
-        <p>RESPONSIVE LAYOUT</p>
+      <div class="viewer-controls">
+        <button onclick="rotateProduct(-1)">↶ ROTATE</button>
+        <button onclick="rotateProduct(1)">ROTATE ↷</button>
       </div>
-      <div class="counter-card">
-        <div class="counter-number" data-target="24" data-suffix="/7">0</div>
-        <p>DEMO ACCESS</p>
-      </div>
+      <h2 id="viewerName">Product</h2>
+      <p id="viewerCategory" class="muted"></p>
+      <p id="viewerPrice" class="featured-price"></p>
+      <p id="viewerDescription" class="muted"></p>
+      <button class="gold-button" id="viewerAdd">ADD TO BAG</button>
     </div>
   </div>
-</section>
 
-<!-- CTA -->
-<section class="section">
-  <div class="container">
-    <div class="cta">
-      <div class="eyebrow">YOUR NEXT SIGNATURE LOOK</div>
-      <h2>Make your style <span class="gold">NOVA.</span></h2>
-      <p>Explore the collection and find your next favorite piece.</p>
-      <a class="btn" href="#shop">SHOP THE COLLECTION ↗</a>
-    </div>
-  </div>
-</section>
-</main>
-
-<footer>
-  <div class="container footer-inner">
-    <a class="footer-logo" href="#home">NOVA</a>
-    <span>© 2026 NOVA — FASHION STORE DEMO</span>
-    <a href="#home">BACK TO TOP ↑</a>
-  </div>
-</footer>
-
-<!-- CART MODAL -->
-<div class="modal" id="cartModal">
-  <div class="modal-box">
-    <div class="modal-head">
-      <h2>Your bag</h2>
-      <button class="close-btn" onclick="closeModal('cartModal')">CLOSE ✕</button>
-    </div>
-    <div id="cartItems"></div>
-    <div class="cart-line">
-      <strong>Total</strong>
-      <strong class="price" id="cartTotal">৳0</strong>
-    </div>
-    <button class="btn" onclick="toast('Demo only — payment is not connected')">
-      CONTINUE · DEMO
-    </button>
-    <p class="muted" style="font-size:11px">No real payment is collected.</p>
-  </div>
-</div>
-
-<!-- PRODUCT DETAIL MODAL -->
-<div class="modal" id="detailModal">
-  <div class="modal-box">
-    <div class="modal-head">
-      <h2>Product details</h2>
-      <button class="close-btn" onclick="closeModal('detailModal')">CLOSE ✕</button>
-    </div>
-    <div id="productDetail"></div>
-  </div>
-</div>
-
-<div class="toast" id="toast"></div>
-
-<script>
-/* PRODUCT DATA
-   Change the image paths to match your GitHub file names.
-*/
-const products = [
-  {
-    id: 1,
-    name: "Urban Leather Jacket",
-    category: "Jackets",
-    price: 3650,
-    tag: "NEW ARRIVAL",
-    desc: "Premium-inspired leather jacket.",
-    image: "images/jacket.jpg"
-  },
-  {
-    id: 2,
-    name: "NOVA Sneakers",
-    category: "Sneakers",
-    price: 2850,
-    tag: "BESTSELLER",
-    desc: "Modern everyday sneakers.",
-    image: "images/sneakers.jpg"
-  }
-];
-    id:2,
-    name:"Racing Collection Jacket",
-    category:"Racing",
-    price:2200,
-    tag:"RACING STYLE",
-    image:"images/ferrari.jpg",
-    fallback:"",
-    desc:"A bold racing-inspired color-block jacket for a sporty look."
-  },
-  {
-    id:3,
-    name:"NOVA Street Sneakers",
-    category:"Sneakers",
-    price:3100,
-    tag:"STREET STYLE",
-    image:"images/shoes.jpg",
-    fallback:"",
-    desc:"A versatile streetwear sneaker with a clean modern silhouette."
-  },
-  {
-    id:4,
-    name:"Classic Leather Jacket",
-    category:"Jackets",
-    price:3450,
-    tag:"SIGNATURE",
-
-
-let cart = [];
-let wishlist = [];
-let currentFilter = "All";
-let wishlistOnly = false;
-
-const money = n => "৳" + Number(n).toLocaleString("en-US");
-
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&":"&amp;",
-    "<":"&lt;",
-    ">":"&gt;",
-    '"':"&quot;",
-    "'":"&#39;"
-  }[char]));
-}
-
-function productImage(p) {
-  const fallback = p.fallback
-    ? `onerror="if(this.dataset.fallback){this.onerror=null;this.src=this.dataset.fallback;this.dataset.fallback=''}else{this.classList.add('missing');this.parentElement.classList.remove('has-image')}"`
-    : `onerror="this.classList.add('missing');this.parentElement.classList.remove('has-image')"`;
-
-  return `<img src="${escapeHTML(p.image)}"
-    alt="${escapeHTML(p.name)}"
-    data-fallback="${escapeHTML(p.fallback || '')}"
-    ${fallback}>`;
-}
-
-function renderProducts() {
-  const visible = products.filter(p =>
-    (currentFilter === "All" || p.category === currentFilter) &&
-    (!wishlistOnly || wishlist.includes(p.id))
-  );
-
-  const grid = document.getElementById("products");
-
-  if (!visible.length) {
-    grid.innerHTML = '<p class="empty">No products to display. Try another category or save a favorite.</p>';
-  } else {
-    grid.innerHTML = visible.map(p => `
-      <article class="product">
-        <div class="product-art has-image">
-          ${productImage(p)}
-          <span class="product-tag">${escapeHTML(p.tag)}</span>
-          <button class="heart ${wishlist.includes(p.id) ? "on" : ""}"
-            aria-label="Toggle wishlist"
-            onclick="toggleWishlist(${p.id})">
-            ${wishlist.includes(p.id) ? "♥" : "♡"}
-          </button>
-          <div class="image-fallback">
-            NOVA
-            <span>${escapeHTML(p.category.toUpperCase())}</span>
-          </div>
-        </div>
-        <div class="product-info">
-          <div class="stars">★★★★★</div>
-          <h3>${escapeHTML(p.name)}</h3>
-          <div class="category">${escapeHTML(p.category)}</div>
-          <div class="product-bottom">
-            <span class="price">${money(p.price)}</span>
-            <button class="small-btn" onclick="openProduct(${p.id})">DETAILS</button>
-            <button class="small-btn" onclick="addCart(${p.id})">ADD +</button>
-          </div>
-        </div>
-      </article>
-    `).join("");
-  }
-
-  document.getElementById("wishCount").textContent = wishlist.length;
-  document.getElementById("cartCount").textContent =
-    cart.reduce((sum, item) => sum + item.qty, 0);
-}
-
-document.getElementById("filters").addEventListener("click", event => {
-  const button = event.target.closest("[data-filter]");
-  if (!button) return;
-
-  currentFilter = button.dataset.filter;
-  wishlistOnly = false;
-
-  document.querySelectorAll(".filter").forEach(b =>
-    b.classList.toggle("active", b === button)
-  );
-
-  renderProducts();
-});
-
-function toggleWishlist(id) {
-  wishlist = wishlist.includes(id)
-    ? wishlist.filter(x => x !== id)
-    : [...wishlist, id];
-
-  renderProducts();
-  toast(wishlist.includes(id) ? "Added to wishlist" : "Removed from wishlist");
-}
-
-function showWishlist() {
-  wishlistOnly = true;
-  currentFilter = "All";
-
-  document.querySelectorAll(".filter").forEach(b =>
-    b.classList.toggle("active", b.dataset.filter === "All")
-  );
-
-  renderProducts();
-  document.getElementById("shop").scrollIntoView({behavior:"smooth"});
-  toast(wishlist.length ? "Showing saved products" : "Your wishlist is empty");
-}
-
-function openProduct(id) {
-  const p = products.find(item => item.id === id);
-  if (!p) return;
-
-  document.getElementById("productDetail").innerHTML = `
-    <div class="product-art has-image" style="height:320px;margin-top:18px">
-      ${productImage(p)}
-      <div class="image-fallback">NOVA</div>
-    </div>
-    <h2 style="font:30px Georgia,serif">${escapeHTML(p.name)}</h2>
-    <p class="price">${money(p.price)}</p>
-    <p class="muted">${escapeHTML(p.desc)}</p>
-    <p class="category">${escapeHTML(p.category)}</p>
-    <button class="btn" onclick="addCart(${p.id});closeModal('detailModal')">
-      ADD TO BAG +
-    </button>
-  `;
-
-  openModal("detailModal");
-}
-
-function addCart(id) {
-  const item = cart.find(x => x.id === id);
-
-  if (item) item.qty++;
-  else cart.push({id, qty:1});
-
-  renderProducts();
-  toast("Added to your bag");
-}
-
-function openCart() {
-  renderCart();
-  openModal("cartModal");
-}
-
-function renderCart() {
-  const target = document.getElementById("cartItems");
-
-  if (!cart.length) {
-    target.innerHTML = '<p class="empty">Your bag is empty.</p>';
-  } else {
-    target.innerHTML = cart.map(item => {
-      const p = products.find(x => x.id === item.id);
-      return `
-        <div class="cart-line">
-          <div>
-            <strong>${escapeHTML(p.name)}</strong>
-            <div class="muted">${money(p.price)} × ${item.qty}</div>
-          </div>
-          <div>
-            <strong class="price">${money(p.price * item.qty)}</strong>
-            <div style="margin-top:8px;display:flex;gap:5px">
-              <button onclick="changeQty(${p.id},-1)">−</button>
-              <button onclick="changeQty(${p.id},1)">+</button>
-            </div>
-          </div>
-        </div>
-      `;
-    }).join("");
-  }
-
-  const total = cart.reduce((sum, item) => {
-    const p = products.find(x => x.id === item.id);
-    return sum + p.price * item.qty;
-  }, 0);
-
-  document.getElementById("cartTotal").textContent = money(total);
-  document.getElementById("cartCount").textContent =
-    cart.reduce((sum, item) => sum + item.qty, 0);
-}
-
-function changeQty(id, amount) {
-  const item = cart.find(x => x.id === id);
-  if (!item) return;
-
-  item.qty += amount;
-  if (item.qty <= 0) cart = cart.filter(x => x.id !== id);
-
-  renderCart();
-  renderProducts();
-}
-
-function openModal(id) {
-  document.getElementById(id).classList.add("show");
-}
-function closeModal(id) {
-  document.getElementById(id).classList.remove("show");
-}
-
-document.querySelectorAll(".modal").forEach(modal => {
-  modal.addEventListener("click", event => {
-    if (event.target === modal) modal.classList.remove("show");
-  });
-});
-
-document.addEventListener("keydown", event => {
-  if (event.key === "Escape") {
-    document.querySelectorAll(".modal").forEach(m => m.classList.remove("show"));
-  }
-});
-
-let toastTimeout;
-function toast(message) {
-  const el = document.getElementById("toast");
-  el.textContent = message;
-  el.classList.add("show");
-  clearTimeout(toastTimeout);
-  toastTimeout = setTimeout(() => el.classList.remove("show"), 2300);
-}
-
-/* Animated counters */
-const counters = document.querySelectorAll(".counter-number");
-let countersStarted = false;
-
-function animateCounters() {
-  if (countersStarted) return;
-  countersStarted = true;
-
-  counters.forEach(el => {
-    const target = Number(el.dataset.target);
-    const suffix = el.dataset.suffix || "";
-    const duration = 1000;
-    const start = performance.now();
-
-    function tick(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(target * eased) + suffix;
-
-      if (progress < 1) requestAnimationFrame(tick);
-    }
-
-    requestAnimationFrame(tick);
-  });
-}
-
-const counterSection = document.getElementById("counter");
-
-if ("IntersectionObserver" in window) {
-  const observer = new IntersectionObserver(entries => {
-    if (entries.some(entry => entry.isIntersecting)) {
-      animateCounters();
-      observer.disconnect();
-    }
-  }, {threshold:0.2});
-
-  observer.observe(counterSection);
-} else {
-  animateCounters();
-}
-
-/* Start the page without a separate intro animation */
-renderProducts();
-</script>
+  <div class="toast" id="toast"></div>
 </body>
 </html>
