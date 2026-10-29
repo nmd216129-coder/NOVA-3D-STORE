@@ -1,0 +1,27 @@
+
+const products = [
+  {id:1,name:"Signature Leather Jacket",category:"Jackets",gender:"Men",price:3650,image:"images/jacket.jpg",tag:"SIGNATURE"},
+  {id:2,name:"Racing Track Jacket",category:"Racing",gender:"Men",price:2850,image:"images/racing.jpg",tag:"NEW"},
+  {id:3,name:"NOVA Street Sneakers",category:"Sneakers",gender:"Men",price:3100,image:"images/shoes.jpg",tag:"POPULAR"},
+  {id:4,name:"Essential Hoodie",category:"Hoodies",gender:"Men",price:1950,image:"images/hoodie.jpg",tag:"ESSENTIAL"},
+  {id:5,name:"Classic Weekender Bag",category:"Bags",gender:"Men",price:2450,image:"images/bag.jpg",tag:"TRAVEL"},
+  {id:6,name:"NOVA Timepiece",category:"Watches",gender:"Men",price:4250,image:"images/watch.jpg",tag:"TIMELESS"},
+  {id:7,name:"Premium Overshirt",category:"Jackets",gender:"Men",price:2950,image:"images/overshirt.jpg",tag:"EDITOR PICK"},
+  {id:8,name:"Urban Low Sneakers",category:"Sneakers",gender:"Men",price:2750,image:"images/sneakers2.jpg",tag:"URBAN"},
+  {id:9,name:"Premium Zip Hoodie",category:"Hoodies",gender:"Men",price:2250,image:"images/ziphoodie.jpg",tag:"NEW"},
+  {id:10,name:"Minimal Shoulder Bag",category:"Bags",gender:"Women",price:2550,image:"images/shoulderbag.jpg",tag:"SIGNATURE"},
+  {id:11,name:"Women's Classic Jacket",category:"Jackets",gender:"Women",price:3450,image:"images/womensjacket.jpg",tag:"CLASSIC"},
+  {id:12,name:"Women's Street Sneakers",category:"Sneakers",gender:"Women",price:2950,image:"images/womenshoes.jpg",tag:"POPULAR"},
+  {id:13,name:"Elegant Handbag",category:"Bags",gender:"Women",price:3200,image:"images/handbag.jpg",tag:"FEATURED"},
+  {id:14,name:"Women's Everyday Watch",category:"Watches",gender:"Women",price:3900,image:"images/womenswatch.jpg",tag:"TIMELESS"},
+  {id:15,name:"Women's Soft Hoodie",category:"Hoodies",gender:"Women",price:1850,image:"images/womenshoodie.jpg",tag:"ESSENTIAL"},
+  {id:16,name:"Racing Team Jacket",category:"Racing",gender:"Men",price:3300,image:"images/racing2.jpg",tag:"RACING"},
+  {id:17,name:"Classic Leather Bag",category:"Bags",gender:"Men",price:2800,image:"images/leatherbag.jpg",tag:"PREMIUM"},
+  {id:18,name:"Retro Sneakers",category:"Sneakers",gender:"Men",price:2650,image:"images/retro.jpg",tag:"RETRO"},
+  {id:19,name:"Brown Leather Jacket",category:"Jackets",gender:"Men",price:3850,image:"images/brownjacket.jpg",tag:"LIMITED"},
+  {id:20,name:"Women's Cropped Jacket",category:"Jackets",gender:"Women",price:3150,image:"images/croppedjacket.jpg",tag:"MODERN"},
+  {id:21,name:"Travel Duffel Bag",category:"Bags",gender:"Women",price:2900,image:"images/duffel.jpg",tag:"TRAVEL"},
+  {id:22,name:"Premium Knit Hoodie",category:"Hoodies",gender:"Women",price:2150,image:"images/knit.jpg",tag:"COMFORT"},
+  {id:23,name:"Minimal Gold Watch",category:"Watches",gender:"Men",price:4500,image:"images/goldwatch.jpg",tag:"LUXURY"},
+  {id:24,name:"Classic White Sneakers",category:"Sneakers",gender:"Women",price:2800,image:"images/whiteshoes.jpg",tag:"EVERYDAY"}
+];
