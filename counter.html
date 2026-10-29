@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>NOVA | Collection Counter</title>
+<link rel="stylesheet" href="style.css">
+<script src="products.js" defer></script>
+</head>
+<body>
+<div class="announcement">NOVA COLLECTION OVERVIEW</div>
+<header class="header">
+<a class="logo" href="index.html">NOVA</a>
+<nav><a href="index.html">HOME</a><a href="index.html#shop">SHOP</a><a href="about.html">ABOUT</a></nav>
+</header>
+<main class="section">
+<p class="eyebrow">THE COLLECTION IN NUMBERS</p>
+<h1 style="font:clamp(38px,7vw,65px) Georgia,serif">The NOVA <span style="color:#d7b56d">counter.</span></h1>
+<p class="muted">A quick overview of the demo catalog.</p>
+<div class="experience-grid">
+<article><strong id="productCount">24</strong><p>Demo products in the catalog</p></article>
+<article><strong>02</strong><p>Collections: Men and Women</p></article>
+<article><strong>06+</strong><p>Fashion categories</p></article>
+</div>
+<h2 style="font:32px Georgia,serif;margin-top:45px">Catalog details</h2>
+<div id="counterDetails" class="experience-grid"></div>
+</main>
+<footer><a class="logo" href="index.html">NOVA</a><p>DEMO STATISTICS — NOT REAL SALES DATA</p></footer>
+<script>
+if(window.products){
+ document.getElementById("productCount").textContent=products.length;
+ const categories=[...new Set(products.map(p=>p.category))];
+ document.getElementById("counterDetails").innerHTML=categories.map((c,i)=>`
+ <article><strong>${String(i+1).padStart(2,"0")} / ${c}</strong>
+ <p>${products.filter(p=>p.category===c).length} demo products in this category.</p></article>
+ `).join("");
+}
+</script>
+</body>
+</html>
